@@ -15,8 +15,9 @@
 -numero : int 
 --
 case(int,int,int)
-+getPos():int[2]
++getPos():PosInt
 +setPos(int,int):void
++setPos(PosInt):void
 +getNum():int
 +checkPlacementAbsolute():bool
 +checkPlacementRelative():int
@@ -46,7 +47,7 @@ Board(int,int)
 +getWidth():int
 +getHeight():int
 +isCompleted():bool
-+swapCases(int,int,int,int):void
++swapTiles(PosInt,PosInt):void
 +shuffle(int):void
 +draw():void</panel_attributes>
     <additional_attributes/>
