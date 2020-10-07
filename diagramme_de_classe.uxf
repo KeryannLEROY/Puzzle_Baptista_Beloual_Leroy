@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>470</x>
-      <y>40</y>
-      <w>210</w>
-      <h>240</h>
+      <x>434</x>
+      <y>105</y>
+      <w>147</w>
+      <h>189</h>
     </coordinates>
-    <panel_attributes>Tile
+    <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
+&lt;&lt;abstract&gt;&gt;
+Tile
 --
 -pos : PosInt
 -numero : int 
+-board : Board
+
 --
-case(int,int,int)
+case(int,int,int,Board)
 +getPos():PosInt
 +setPos(int,int):void
 +setPos(PosInt):void
 +getNum():int
++getBoard():Board
 +checkPlacementAbsolute():bool
 +checkPlacementRelative():int
 
@@ -28,12 +33,13 @@ case(int,int,int)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>0</y>
-      <w>210</w>
-      <h>280</h>
+      <x>168</x>
+      <y>77</y>
+      <w>147</w>
+      <h>196</h>
     </coordinates>
-    <panel_attributes>Board
+    <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
+Board
 --
 -width : int
 -height : int
@@ -55,10 +61,10 @@ Board(int,int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>180</y>
-      <w>200</w>
-      <h>80</h>
+      <x>308</x>
+      <y>203</y>
+      <w>140</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 
@@ -72,10 +78,10 @@ m2=0..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>850</x>
-      <y>570</y>
-      <w>210</w>
-      <h>190</h>
+      <x>700</x>
+      <y>476</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;&lt;ENUM&gt;&gt;
 DIRECTION
@@ -90,12 +96,13 @@ LEFT</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>420</y>
-      <w>210</w>
-      <h>190</h>
+      <x>168</x>
+      <y>371</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
-    <panel_attributes>Game
+    <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
+Game
 --
 -score : int
 
@@ -114,10 +121,10 @@ Game(int,int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>270</y>
-      <w>100</w>
-      <h>170</h>
+      <x>231</x>
+      <y>266</y>
+      <w>70</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 
@@ -131,10 +138,10 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
-      <y>70</y>
-      <w>210</w>
-      <h>110</h>
+      <x>602</x>
+      <y>126</y>
+      <w>147</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>CaseVide
 --
@@ -147,10 +154,10 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
-      <y>270</y>
-      <w>210</w>
-      <h>240</h>
+      <x>602</x>
+      <y>266</y>
+      <w>147</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>Case
 --
@@ -170,10 +177,10 @@ m2=0..1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>170</y>
-      <w>160</w>
-      <h>60</h>
+      <x>574</x>
+      <y>196</y>
+      <w>112</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;140.0;10.0</additional_attributes>
@@ -181,10 +188,10 @@ m2=0..1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>230</y>
-      <w>130</w>
-      <h>60</h>
+      <x>574</x>
+      <y>238</y>
+      <w>91</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;40.0</additional_attributes>
@@ -192,12 +199,13 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>420</x>
-      <y>340</y>
-      <w>240</w>
-      <h>190</h>
+      <x>399</x>
+      <y>315</y>
+      <w>168</w>
+      <h>133</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+    <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
+&lt;&lt;Abstract&gt;&gt;
 Position
 --
 
@@ -213,10 +221,10 @@ Position
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>390</x>
-      <y>560</y>
-      <w>210</w>
-      <h>190</h>
+      <x>378</x>
+      <y>469</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>PosInt
 --
@@ -227,6 +235,9 @@ Position(int,int)
 
 +getX():int
 +getY():int
++setX():int
++setY():int
+
 
 </panel_attributes>
     <additional_attributes/>
@@ -234,10 +245,10 @@ Position(int,int)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>560</y>
-      <w>210</w>
-      <h>190</h>
+      <x>539</x>
+      <y>469</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>PosDouble
 --
@@ -247,16 +258,18 @@ Position(int,int)
 Position(double,double)
 
 +getX():double
-+getY():double</panel_attributes>
++getY():double
++setX():double
++setY():double</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>520</y>
-      <w>40</w>
-      <h>60</h>
+      <x>455</x>
+      <y>441</y>
+      <w>28</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>20.0;10.0;10.0;40.0</additional_attributes>
@@ -264,12 +277,31 @@ Position(double,double)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>520</y>
-      <w>190</w>
-      <h>60</h>
+      <x>483</x>
+      <y>441</y>
+      <w>133</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;170.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>371</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>SerialGame
+--
+-game : Game
+--
++setGame(Game game):void
++getGame():Game
++serializeGame(File file):void
++deserializeGame(File file):void
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
