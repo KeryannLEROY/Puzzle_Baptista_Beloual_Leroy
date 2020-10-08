@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>434</x>
-      <y>105</y>
-      <w>147</w>
-      <h>189</h>
+      <x>385</x>
+      <y>215</y>
+      <w>105</w>
+      <h>145</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
 &lt;&lt;abstract&gt;&gt;
@@ -33,10 +33,10 @@ case(int,int,int,Board)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>77</y>
-      <w>147</w>
-      <h>196</h>
+      <x>200</x>
+      <y>210</y>
+      <w>105</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
 Board
@@ -61,10 +61,10 @@ Board(int,int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>308</x>
-      <y>203</y>
-      <w>140</w>
-      <h>56</h>
+      <x>300</x>
+      <y>285</y>
+      <w>95</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 
@@ -73,15 +73,15 @@ contient &gt;
 m1=1
 
 m2=0..*</panel_attributes>
-    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>700</x>
-      <y>476</y>
-      <w>147</w>
-      <h>133</h>
+      <x>385</x>
+      <y>405</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>&lt;&lt;ENUM&gt;&gt;
 DIRECTION
@@ -96,10 +96,10 @@ LEFT</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>371</y>
-      <w>147</w>
-      <h>133</h>
+      <x>0</x>
+      <y>235</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
 Game
@@ -121,10 +121,10 @@ Game(int,int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>231</x>
-      <y>266</y>
-      <w>70</w>
-      <h>119</h>
+      <x>100</x>
+      <y>275</y>
+      <w>110</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 
@@ -133,15 +133,15 @@ possede ^
 m1=1
 
 m2=0..1</panel_attributes>
-    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>602</x>
-      <y>126</y>
-      <w>147</w>
-      <h>77</h>
+      <x>565</x>
+      <y>235</y>
+      <w>105</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>CaseVide
 --
@@ -154,10 +154,10 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>602</x>
-      <y>266</y>
-      <w>147</w>
-      <h>168</h>
+      <x>565</x>
+      <y>315</y>
+      <w>105</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Case
 --
@@ -177,32 +177,32 @@ m2=0..1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>574</x>
-      <y>196</y>
-      <w>112</w>
-      <h>42</h>
+      <x>485</x>
+      <y>260</y>
+      <w>90</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;140.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;160.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>574</x>
-      <y>238</y>
-      <w>91</w>
-      <h>42</h>
+      <x>485</x>
+      <y>310</y>
+      <w>90</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;160.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>399</x>
-      <y>315</y>
-      <w>168</w>
-      <h>133</h>
+      <x>420</x>
+      <y>55</y>
+      <w>120</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
 &lt;&lt;Abstract&gt;&gt;
@@ -221,10 +221,10 @@ Position
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>378</x>
-      <y>469</y>
-      <w>147</w>
-      <h>133</h>
+      <x>605</x>
+      <y>0</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>PosInt
 --
@@ -245,10 +245,10 @@ Position(int,int)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>539</x>
-      <y>469</y>
-      <w>147</w>
-      <h>133</h>
+      <x>605</x>
+      <y>115</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>PosDouble
 --
@@ -266,32 +266,32 @@ Position(double,double)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>455</x>
-      <y>441</y>
-      <w>28</w>
-      <h>42</h>
+      <x>535</x>
+      <y>45</y>
+      <w>80</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>20.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>10.0;80.0;140.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>483</x>
-      <y>441</y>
-      <w>133</w>
-      <h>42</h>
+      <x>535</x>
+      <y>110</y>
+      <w>80</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>371</y>
-      <w>147</w>
-      <h>133</h>
+      <y>105</y>
+      <w>105</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>SerialGame
 --
@@ -303,5 +303,63 @@ Position(double,double)
 +deserializeGame(File file):void
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>235</x>
+      <y>80</y>
+      <w>65</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Serializable
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>295</x>
+      <y>110</y>
+      <w>135</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>295</x>
+      <y>130</y>
+      <w>155</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;290.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>255</x>
+      <y>140</y>
+      <w>15</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>65</x>
+      <y>115</y>
+      <w>180</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>340.0;10.0;10.0;240.0</additional_attributes>
   </element>
 </diagram>
