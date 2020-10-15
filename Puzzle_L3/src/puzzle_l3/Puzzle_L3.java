@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author kerya
+ * @author 
  */
 public class Puzzle_L3 extends Application {
     

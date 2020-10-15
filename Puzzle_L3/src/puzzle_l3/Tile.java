@@ -9,7 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 /**
  *
- * @author kerya
+ * @author keryann
  */
 public abstract class Tile {
     
@@ -72,5 +72,7 @@ public abstract class Tile {
     }
     
     abstract void draw(GraphicsContext context);
+    
+    
     
 }

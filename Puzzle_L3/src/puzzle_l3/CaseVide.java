@@ -9,9 +9,14 @@ import javafx.scene.canvas.GraphicsContext;
 
 /**
  *
- * @author kerya
+ * @author keryann
  */
 public class CaseVide extends Tile{ 
+    
+    public CaseVide(int x,int y,int num,Board board)
+    {
+        super(x,y,num,board);
+    }
     
     public boolean move(DIRECTION dir)
     {
@@ -50,6 +55,7 @@ public class CaseVide extends Tile{
         return valid;
     }
     
+    @Override
     public void draw(GraphicsContext context)
     {
         
