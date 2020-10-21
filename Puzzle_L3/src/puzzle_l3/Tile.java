@@ -73,6 +73,12 @@ public abstract class Tile {
     
     abstract void draw(GraphicsContext context);
     
+    @Override
+    public String toString()
+    {
+        return String.format("%02d",this.numero);
+    }
+    
     
     
 }

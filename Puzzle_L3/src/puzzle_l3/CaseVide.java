@@ -60,4 +60,12 @@ public class CaseVide extends Tile{
     {
         
     }
+    
+    
+    
+        @Override
+    public String toString()
+    {
+        return new String("  ");
+    }
 }
