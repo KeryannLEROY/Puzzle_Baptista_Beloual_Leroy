@@ -22,8 +22,8 @@ public class Board {
     public Board(int w, int h){
         width=w;
         height=h;
-        for(int j;j<height;j++){
-            for(int k;k<width;k++){
+        for(int j=0;j<height;j++){
+            for(int k=0;k<width;k++){
                 if (k==w-1 && j==h-1) {
                     tabTiles[k][j] = new CaseVide(k, j, 0, this);
                     vecTiles[0] = tabTiles[k][j];
@@ -49,7 +49,7 @@ public class Board {
     
     public boolean isCompleted(){
         boolean completed=true;
-        for (int i; i<(width*height) && completed;i++){
+        for (int i=0; i<(width*height) && completed;i++){
                 completed &= vecTiles[i].checkPlacementAbsolute();
         }
         return completed;
@@ -73,7 +73,17 @@ public class Board {
         Random rand = new Random(Instant.now().getEpochSecond());
         for (int i=0;i<n;i++) {
             try {
-            ((CaseVide)vecTiles[0]).move(rand.nextInt()%4);
+                switch(rand.nextInt()%4){
+                    case 0:((CaseVide)vecTiles[0]).move(DIRECTION.UP);
+                        break;
+                    case 1:((CaseVide)vecTiles[0]).move(DIRECTION.RIGHT);
+                        break;
+                    case 2:((CaseVide)vecTiles[0]).move(DIRECTION.DOWN);
+                        break;
+                    case 3:((CaseVide)vecTiles[0]).move(DIRECTION.LEFT);
+                        break;
+                }
+          
             } catch(ClassCastException e){
                 System.out.println(e.getMessage());
             }
