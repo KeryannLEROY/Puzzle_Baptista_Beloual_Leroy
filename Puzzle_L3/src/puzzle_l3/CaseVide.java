@@ -5,10 +5,67 @@
  */
 package puzzle_l3;
 
+import javafx.scene.canvas.GraphicsContext;
+
 /**
  *
- * @author kerya
+ * @author keryann
  */
 public class CaseVide extends Tile{ 
     
+    public CaseVide(int x,int y,int num,Board board)
+    {
+        super(x,y,num,board);
+    }
+    
+    public boolean move(DIRECTION dir)
+    {
+        boolean valid=false;
+        switch(dir)
+        {
+            case DIRECTION.UP:
+                if(getPos().getY()!=0)
+                {
+                    getBoard().swapTiles(pos,new PosInt(pos.getX(),pos.getY()-1));
+                    valid=true;
+                }
+                break;
+            case DIRECTION.RIGHT:
+                if(getPos().getX()!=getBoard().getWidth()-1)
+                {
+                    getBoard().swapTiles(pos,new PosInt(pos.getX()+1,pos.getY()));
+                    valid=true;
+                }
+                break;
+            case DIRECTION.DOWN:
+                if(getPos().getY()!=getBoard().getHeight()-1)
+                {
+                    getBoard().swapTiles(pos,new PosInt(pos.getX(),pos.getY()+1));
+                    valid=true;
+                }
+                break;
+            case DIRECTION.LEFT:
+                if(getPos().getX()!=0)
+                {
+                    getBoard().swapTiles(pos,new PosInt(pos.getX()-1,pos.getY()));
+                    valid=true;
+                }
+                break;
+        }
+        return valid;
+    }
+    
+    @Override
+    public void draw(GraphicsContext context)
+    {
+        
+    }
+    
+    
+    
+        @Override
+    public String toString()
+    {
+        return new String("  ");
+    }
 }
