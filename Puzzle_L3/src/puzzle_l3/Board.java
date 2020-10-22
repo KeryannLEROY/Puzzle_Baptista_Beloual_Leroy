@@ -5,6 +5,10 @@
  */
 package puzzle_l3;
 
+import java.time.Instant;
+import java.util.Random;
+import javafx.scene.canvas.GraphicsContext;
+
 /**
  *
  * @author Mehdi
@@ -14,6 +18,14 @@ public class Board {
     int height;
     Tile tabTiles [][];
     Tile vecTiles [];
+    
+    public Board(int w, int h, Tile tT[][], Tile vT[]){
+        width=w;
+        height=h;
+        Tile tabTiles[][]=tT;
+        Tile vecTiles[]=vT;
+        
+    }
     
     public int getWidth(){
         return width;
@@ -25,12 +37,11 @@ public class Board {
     
     public boolean isCompleted(){
         boolean completed=true;
-        for (int i; i<(width*height);i++){
-            //while (boolean completed){
-           //tile tab.checkpla
+        for (int i; i<(width*height) && completed;i++){
+                completed &= vecTiles[i].checkPlacementAbsolute();
         }
+        return completed;
        
-        
     }
     
     
@@ -45,16 +56,22 @@ public class Board {
         t2= temp; 
     }
     
-    public void shuffle(Board b){
-        
+    
+    public void shuffle(int n){
+        Random rand = new Random(Instant.now().getEpochSecond());
+        for (int i=0;i<n;i++) {
+            try {
+            ((CaseVide)vecTiles[0]).move(rand.nextInt()%4);
+            } catch(ClassCastException e){
+                System.out.println(e.getMessage());
+            }
+        }
         
     }
     
-    public void draw(){
+    public void draw(GraphicsContext context){
         
     }
-    
-    /*constructeur */
-    
+
     
 }
