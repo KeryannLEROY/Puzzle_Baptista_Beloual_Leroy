@@ -19,11 +19,23 @@ public class Board {
     Tile tabTiles [][];
     Tile vecTiles [];
     
-    public Board(int w, int h, Tile tT[][], Tile vT[]){
+    public Board(int w, int h){
         width=w;
         height=h;
-        Tile tabTiles[][]=tT;
-        Tile vecTiles[]=vT;
+        for(int j;j<height;j++){
+            for(int k;k<width;k++){
+                if (k==w-1 && j==h-1) {
+                    tabTiles[k][j] = new CaseVide(k, j, 0, this);
+                    vecTiles[0] = tabTiles[k][j];
+                    
+                } else {
+                    tabTiles[k][j] = new CasePleine(k, j, (k+(j*w))+1, this);
+                    vecTiles[(k+(j*w))+1] = tabTiles[k][j];
+                }
+                
+            }
+        }
+        
         
     }
     
