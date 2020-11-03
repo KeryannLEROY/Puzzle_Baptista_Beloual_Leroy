@@ -13,9 +13,9 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public abstract class Tile {
     
-    private PosInt pos;
-    private  int numero;
-    private Board board;
+    protected PosInt pos;
+    protected  int numero;
+    protected  Board board;
     
     public Tile(int x,int y,int num,Board board)
     {

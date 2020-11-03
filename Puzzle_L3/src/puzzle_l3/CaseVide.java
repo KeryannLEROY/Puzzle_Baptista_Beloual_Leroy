@@ -23,28 +23,28 @@ public class CaseVide extends Tile{
         boolean valid=false;
         switch(dir)
         {
-            case DIRECTION.UP:
+            case UP:
                 if(getPos().getY()!=0)
                 {
                     getBoard().swapTiles(pos,new PosInt(pos.getX(),pos.getY()-1));
                     valid=true;
                 }
                 break;
-            case DIRECTION.RIGHT:
+            case RIGHT:
                 if(getPos().getX()!=getBoard().getWidth()-1)
                 {
                     getBoard().swapTiles(pos,new PosInt(pos.getX()+1,pos.getY()));
                     valid=true;
                 }
                 break;
-            case DIRECTION.DOWN:
+            case DOWN:
                 if(getPos().getY()!=getBoard().getHeight()-1)
                 {
                     getBoard().swapTiles(pos,new PosInt(pos.getX(),pos.getY()+1));
                     valid=true;
                 }
                 break;
-            case DIRECTION.LEFT:
+            case LEFT:
                 if(getPos().getX()!=0)
                 {
                     getBoard().swapTiles(pos,new PosInt(pos.getX()-1,pos.getY()));
