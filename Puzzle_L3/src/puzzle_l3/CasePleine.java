@@ -1,11 +1,11 @@
-s/*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package puzzle_l3;
 
-import java.util.List;
+import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -30,27 +30,27 @@ public class CasePleine extends Tile{
         
     public boolean move()
     {
-        List voisins;
+        ArrayList voisins=new ArrayList(4);
         try{
-            voisins.add(getBoard().getTile(pos.getX()-1),pos.getX())
+            voisins.add(getBoard().getTile(new PosInt(pos.getX()-1,pos.getX())));
         }catch(IndexOutOfBoundsException e)
         {
             System.out.println(e.getMessage());
         }
         try{
-            voisins.add(getBoard().getTile(pos.getX()),pos.getX()-1)
+            voisins.add(getBoard().getTile(new PosInt(pos.getX(),pos.getX()-1)));
         }catch(IndexOutOfBoundsException e)
         {
             System.out.println(e.getMessage());
         }
         try{
-            voisins.add(getBoard().getTile(pos.getX()+1),pos.getX())
+            voisins.add(getBoard().getTile(new PosInt(pos.getX()+1,pos.getX())));
         }catch(IndexOutOfBoundsException e)
         {
             System.out.println(e.getMessage());
         }
         try{
-            voisins.add(getBoard().getTile(pos.getX()),pos.getX()+1)
+            voisins.add(getBoard().getTile(new PosInt(pos.getX(),pos.getX()+1)));
         }catch(IndexOutOfBoundsException e)
         {
             System.out.println(e.getMessage());
@@ -59,7 +59,7 @@ public class CasePleine extends Tile{
         {
             if(voisins.get(i) instanceof CaseVide)
             {
-                getBoard().swapTiles(voisins.get(i).getPos(),this.getPos());
+                getBoard().swapTiles(((Tile)voisins.get(i)).getPos(),this.getPos());
                 return true;
             }
         }
