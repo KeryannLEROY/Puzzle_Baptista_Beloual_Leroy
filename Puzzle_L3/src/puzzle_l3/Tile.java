@@ -52,7 +52,7 @@ public abstract class Tile {
     
     public boolean checkPlacementAbsolute()
     {
-        return pos.getX() ==  (numero-1+getBoard().getWidth()) % getBoard().getWidth() && pos.getY() == (int)((numero-1+(getBoard().getWidth()*getBoard().getHeight()))%(getBoard().getWidth()*getBoard().getHeight()) /getBoard().getWidth());
+        return pos.getX() == (numero-1) % getBoard().getWidth() && pos.getY() == (int)((numero-1) /getBoard().getWidth());
     }
     
     public int checkPlacementRelative()

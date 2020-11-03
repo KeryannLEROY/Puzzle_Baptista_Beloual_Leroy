@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
 
 /**
  *
@@ -19,58 +18,18 @@ import javafx.scene.input.KeyEvent;
  */
 public class FXMLDocumentController implements Initializable {
     
-    private Board b;
-    
     @FXML
     private Label label;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        b.shuffle(100);
-        System.out.println(b);
-    }
-    
-    @FXML
-    private void keyTypedHandler(KeyEvent event) {
-        String s =event.getCharacter();
-        
-        if(!b.isCompleted())
-        {
-            switch(s)
-            {
-                case "z":((CaseVide)b.getTile(0)).move(DIRECTION.DOWN);
-                        break;
-                case "q":((CaseVide)b.getTile(0)).move(DIRECTION.RIGHT);
-                        break;
-                case "s":((CaseVide)b.getTile(0)).move(DIRECTION.UP);
-                        break;
-                case "d":((CaseVide)b.getTile(0)).move(DIRECTION.LEFT);
-                        break;
-            }
-        }
-        event.consume();
-        System.out.println(b);
-        
-        if(b.isCompleted())
-        {
-            System.out.println( "                                           ▄█\n" +
-"  ▄▄█▀▀▀█▄█                              ▄█▀\n" +
-"▄██▀     ▀█                              ▀\n" +
-"██▀       ▀ ▄█▀██▄  ▄█▀█████████████▄   ▄▄█▀██\n" +
-"██         ██   ██ ▄██  ██   ██    ██  ▄█▀   ██\n" +
-"██▄    ▀████▄█████ ▀█████▀   ██    ██  ██▀▀▀▀▀▀\n" +
-"▀██▄     ████   ██ ██        ██    ██  ██▄    ▄\n" +
-"  ▀▀███████▀████▀██▄███████▄████  ████▄ ▀█████▀\n" +
-"                   █▀     ██\n" +
-"                   ██████▀");
-        }
+        System.out.println("You clicked me!");
+        label.setText("Hello World!");
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        b= new Board(4,4);
-        b.shuffle(100);
-        System.out.println(b);
+        // TODO
     }    
     
 }
