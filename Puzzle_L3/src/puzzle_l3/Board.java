@@ -22,6 +22,8 @@ public class Board {
     public Board(int w, int h){
         width=w;
         height=h;
+        tabTiles=new Tile[w][h];
+        vecTiles=new Tile[w*h];
         for(int j=0;j<height;j++){
             for(int k=0;k<width;k++){
                 if (k==w-1 && j==h-1) {
@@ -50,7 +52,7 @@ public class Board {
     public boolean isCompleted(){
         boolean completed=true;
         for (int i=0; i<(width*height) && completed;i++){
-                completed &= vecTiles[i].checkPlacementAbsolute();
+            completed &= vecTiles[i].checkPlacementAbsolute();
         }
         return completed;
        
@@ -62,10 +64,17 @@ public class Board {
     /*Méthode our permettre l'échange avec une case qui a la possiblité de bouger
     et la case vide.
     */ 
-    public void swapTiles(Tile t1,Tile t2){
+    public void swapTiles(PosInt p1,PosInt p2){
+        /*
         Tile temp = t1;
         t1 = t2;
         t2= temp; 
+*/
+        Tile temp = this.getTile(p1);
+        this.tabTiles[p1.getX()][p1.getY()]=this.tabTiles[p2.getX()][p2.getY()];
+        this.tabTiles[p2.getX()][p2.getY()]=temp;
+        this.getTile(p1).setPos(p1);
+        this.getTile(p2).setPos(p2);
     }
     
     
@@ -91,8 +100,38 @@ public class Board {
         
     }
     
+    public Tile getTile(int x,int y)
+    {
+        return this.tabTiles[x][y];
+    }
+    
+    public Tile getTile(PosInt p1)
+    {
+        return getTile(p1.getX(),p1.getY());
+    }
+    
+    public Tile getTile(int num)throws IndexOutOfBoundsException
+    {
+        return vecTiles[num];
+    }
+    
     public void draw(GraphicsContext context){
         
+    }
+    @Override
+    public String toString(){
+        String buffer= new String();
+        for( int y=0;y<getWidth();++y)
+        {
+            for( int x=0;x<getHeight();++x)
+            {
+                buffer+=' ';
+                buffer+=this.getTile(x, y);
+                buffer+=' ';
+            }
+            buffer+='\n';
+        }
+        return buffer;
     }
 
     
