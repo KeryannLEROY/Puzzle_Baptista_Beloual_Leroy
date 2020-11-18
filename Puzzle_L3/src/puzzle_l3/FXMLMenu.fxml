@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="puzzle_l3.FXMLMenuController">
+    
+    <children>
+        
+        
+        <Button fx:id="buttonj" layoutX="260" layoutY="210" text="Jouer" onAction="#jouer"/>
+        <Label fx:id="labelj" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+        
+        <Button fx:id="buttono" layoutX="260" layoutY="255" text="Options" />
+        <Label fx:id="labelo" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+        
+        
+        <Text text="X" layoutX="360" layoutY="315"/>
+        <TextField layoutX="390" layoutY="295" fx:id="xdim"/>
+        
+        
+        <Text text="Y" layoutX="360" layoutY="355" />
+        <TextField layoutX="390" layoutY="335" fx:id="ydim"/>
+ 
+        
+        <Button fx:id="buttonm" layoutX="260" layoutY="305" text="Modifier" onAction="#submitPuzzleSize"/>
+        <Label fx:id="labelm" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+        
+        
+        
+        
+        
+    </children>
+
+
+</AnchorPane>
