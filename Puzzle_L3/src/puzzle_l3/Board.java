@@ -40,6 +40,27 @@ public class Board {
         
         
     }
+    public Board(int w, int h,int tileSize){
+        width=w;
+        height=h;
+        tabTiles=new Tile[w][h];
+        vecTiles=new Tile[w*h];
+        for(int j=0;j<height;j++){
+            for(int k=0;k<width;k++){
+                if (k==w-1 && j==h-1) {
+                    tabTiles[k][j] = new CaseVide(k, j, 0, this);
+                    vecTiles[0] = tabTiles[k][j];
+                    
+                } else {
+                    tabTiles[k][j] = new CasePleine(k, j, (k+(j*w))+1, this,tileSize);
+                    vecTiles[(k+(j*w))+1] = tabTiles[k][j];
+                }
+                
+            }
+        }
+        
+        
+    }
     
     public int getWidth(){
         return width;
@@ -65,16 +86,14 @@ public class Board {
     et la case vide.
     */ 
     public void swapTiles(PosInt p1,PosInt p2){
-        /*
-        Tile temp = t1;
-        t1 = t2;
-        t2= temp; 
-*/
         Tile temp = this.getTile(p1);
-        this.tabTiles[p1.getX()][p1.getY()]=this.tabTiles[p2.getX()][p2.getY()];
+        this.tabTiles[p1.getX()][p1.getY()]=this.getTile(p2);
         this.tabTiles[p2.getX()][p2.getY()]=temp;
+        
         this.getTile(p1).setPos(p1);
+
         this.getTile(p2).setPos(p2);
+
     }
     
     
@@ -100,12 +119,12 @@ public class Board {
         
     }
     
-    public Tile getTile(int x,int y)
+    public Tile getTile(int x,int y)throws IndexOutOfBoundsException
     {
         return this.tabTiles[x][y];
     }
     
-    public Tile getTile(PosInt p1)
+    public Tile getTile(PosInt p1)throws IndexOutOfBoundsException
     {
         return getTile(p1.getX(),p1.getY());
     }
@@ -116,8 +135,21 @@ public class Board {
     }
     
     public void draw(GraphicsContext context){
-        
+
+        for(int i=0;i<width*height;++i)
+        {
+            vecTiles[i].draw(context);
+        }
     }
+    public void animate(double deltaT){
+
+        for(int i=0;i<width*height;++i)
+        {
+            vecTiles[i].animate(deltaT);
+        }
+    }
+    
+    
     @Override
     public String toString(){
         String buffer= new String();

@@ -69,6 +69,14 @@ public class PosInt extends Position{
         return direction;
         
     }
-    
+    @Override
+    public String toString()
+    {
+        return x+";"+y;
+    }
+     @Override
+    protected Object clone() {
+        return new PosInt(x, y);
+    }
        
 }

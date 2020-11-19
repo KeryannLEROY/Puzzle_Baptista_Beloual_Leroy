@@ -6,6 +6,8 @@
 package puzzle_l3;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -22,44 +24,92 @@ public class CasePleine extends Tile{
     private Image image;
     private Color highlight;
     private boolean isHighlighted;
-
+    private int size;
+    
     public CasePleine(int x,int y,int num,Board board)
     {
         super(x,y,num,board);
+        this.size = 10;
+        posGraphic = new PosDouble(x, y);
     }
+    public CasePleine(int x,int y,int num,Board board,int size)
+    {
+        super(x,y,num,board);
+        this.size = size;
+        posGraphic = new PosDouble(x*size, y*size);
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public void setHighlight(Color highlight) {
+        this.highlight = highlight;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public PosDouble getPosGraphic(){
+        return (PosDouble) posGraphic.clone();
+    }
+
+    public Image getImage() {
+        return  image;
+    }
+
+    public Color getHighlight() {
+        return highlight;
+    }
+
+    public boolean isIsHighlighted() {
+        return isHighlighted;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    
         
     public boolean move()
     {
-        ArrayList voisins=new ArrayList(4);
+        ArrayList<Tile> voisins=new ArrayList<Tile>(4);
         try{
-            voisins.add(getBoard().getTile(new PosInt(pos.getX()-1,pos.getX())));
+            voisins.add(getBoard().getTile(pos.getX()-1,pos.getY()));
         }catch(IndexOutOfBoundsException e)
         {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getCause());
         }
         try{
-            voisins.add(getBoard().getTile(new PosInt(pos.getX(),pos.getX()-1)));
+            voisins.add(getBoard().getTile(pos.getX(),pos.getY()-1));
         }catch(IndexOutOfBoundsException e)
         {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getCause());
         }
         try{
-            voisins.add(getBoard().getTile(new PosInt(pos.getX()+1,pos.getX())));
+            voisins.add(getBoard().getTile(pos.getX()+1,pos.getY()));
         }catch(IndexOutOfBoundsException e)
         {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getCause());
         }
         try{
-            voisins.add(getBoard().getTile(new PosInt(pos.getX(),pos.getX()+1)));
+            voisins.add(getBoard().getTile(pos.getX(),pos.getY()+1));
         }catch(IndexOutOfBoundsException e)
         {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getCause());
         }
         for(int i=0;i<voisins.size();++i)
         {
+            
             if(voisins.get(i) instanceof CaseVide)
             {
+
+                
                 getBoard().swapTiles(((Tile)voisins.get(i)).getPos(),this.getPos());
+                
+                
                 return true;
             }
         }
@@ -79,6 +129,24 @@ public class CasePleine extends Tile{
     @Override
     public void draw(GraphicsContext context)
     {
-        
+        context.setFill(new Color(numero /(float)(board.getHeight()*board.getWidth()),this.checkPlacementAbsolute()?0.5:0,this.checkPlacementAbsolute()?0:0.5,1));
+        context.fillRoundRect(posGraphic.getX()*size, posGraphic.getY()*size, size, size,size/10, size/10);
     }
+
+    @Override
+    public void animate(double deltaT) {
+        if(posGraphic.getDistance(pos)<0.1)
+        {
+            posGraphic.setX(pos.getX());
+            posGraphic.setY(pos.getY());
+        }
+        else
+        {
+            PosDouble dir = posGraphic.getDirection(pos);
+            double dist = posGraphic.getDistance(pos);
+            posGraphic.setX(posGraphic.getX()+dir.getX()*deltaT*dist*10);
+            posGraphic.setY(posGraphic.getY()+dir.getY()*deltaT*dist*10);
+        }
+    }
+    
 }

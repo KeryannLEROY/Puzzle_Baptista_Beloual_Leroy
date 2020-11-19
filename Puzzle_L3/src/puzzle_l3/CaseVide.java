@@ -60,10 +60,15 @@ public class CaseVide extends Tile{
     {
         
     }
+
+    @Override
+    public void animate(double deltaT) {
+        
+    }
     
     
     
-        @Override
+    @Override
     public String toString()
     {
         return new String("  ");

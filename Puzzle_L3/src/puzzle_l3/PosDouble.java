@@ -66,4 +66,16 @@ public class PosDouble extends Position{
         
     }
     
+    @Override
+    public String toString()
+    {
+        return x+";"+y;
+    }
+
+    @Override
+    protected Object clone() {
+        return new PosDouble(x, y);
+    }
+    
+    
 }

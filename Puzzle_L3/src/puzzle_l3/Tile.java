@@ -26,7 +26,7 @@ public abstract class Tile {
     
     public PosInt getPos()
     {
-        return pos;
+        return (PosInt) pos.clone();
     }
     
     public void setPos(int x,int y) 
@@ -71,8 +71,8 @@ public abstract class Tile {
         return nbValid;
     }
     
-    abstract void draw(GraphicsContext context);
-    
+    abstract public void draw(GraphicsContext context);
+    abstract public void animate(double deltaT);
     @Override
     public String toString()
     {

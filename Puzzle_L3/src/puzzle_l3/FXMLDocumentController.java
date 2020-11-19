@@ -48,7 +48,7 @@ public class FXMLDocumentController implements Initializable {
                         break;
             }
         }
-        event.consume();
+        
         System.out.println(b);
         
         if(b.isCompleted())
