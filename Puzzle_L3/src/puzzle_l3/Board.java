@@ -13,7 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
  *
  * @author Mehdi
  */
-public class Board {
+public class Board  implements java.io.Serializable{
     int width;
     int height;
     Tile tabTiles [][];
@@ -39,6 +39,10 @@ public class Board {
         }
         
         
+    }
+
+    Board(String width, String height, String tabTiles, String vecTiles) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public int getWidth(){
@@ -132,6 +136,10 @@ public class Board {
             buffer+='\n';
         }
         return buffer;
+    }
+
+    String getWight() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

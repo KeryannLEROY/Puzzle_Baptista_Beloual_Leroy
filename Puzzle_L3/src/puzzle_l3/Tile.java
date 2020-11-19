@@ -11,7 +11,7 @@ import javafx.scene.canvas.GraphicsContext;
  *
  * @author keryann
  */
-public abstract class Tile {
+public abstract class Tile  implements java.io.Serializable{
     
     protected PosInt pos;
     protected  int numero;
