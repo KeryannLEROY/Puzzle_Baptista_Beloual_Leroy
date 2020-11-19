@@ -43,21 +43,13 @@ public class FXMLMenuController{
     
     @FXML
     private void submitPuzzleSize(ActionEvent event){
-        System.out.println("aa");
+        String x = xdim.getText();
+        int x_num = Integer.parseInt((String) x);
+        System.out.println("X= "+x_num);
         
-        System.out.println(xdim.getText());
-        String lol = xdim.getText();
-        System.out.println(lol);
-        int loln = Integer.parseInt((String) lol);
-        System.out.println("hm "+loln);
-        
-        System.out.println(ydim.getText());
-        String lol2 = ydim.getText();
-        System.out.println(lol2);
-        int loln2 = Integer.parseInt((String) lol2);
-        System.out.println("hm2 "+loln2);
-        
-        
+        String y = ydim.getText();
+        int y_num = Integer.parseInt((String) y);
+        System.out.println("Y= "+y_num);
         
        }
     
