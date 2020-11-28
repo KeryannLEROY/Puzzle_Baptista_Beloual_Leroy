@@ -20,14 +20,16 @@ import javafx.scene.input.KeyEvent;
 public class FXMLDocumentController implements Initializable {
     
     private Board b;
+    private Partie p;
     
     @FXML
     private Label label;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        b.shuffle(100);
-        System.out.println(b);
+       
+        p = DeserPartie.deserialize();
+        b = p.getBoard();
     }
     
     @FXML
@@ -71,6 +73,8 @@ public class FXMLDocumentController implements Initializable {
         b= new Board(4,4);
         b.shuffle(100);
         System.out.println(b);
+        p= new Partie(0,0,b);
+        SerializerPartie.serialize(p);
     }    
     
 }
