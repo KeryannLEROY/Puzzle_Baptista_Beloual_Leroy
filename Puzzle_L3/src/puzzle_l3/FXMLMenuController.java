@@ -6,20 +6,17 @@
 package puzzle_l3;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import puzzle_l3.Puzzle_L3.Globals;
 
 /**
  *
@@ -27,7 +24,7 @@ import javafx.stage.StageStyle;
  */
 public class FXMLMenuController{
     
-    private Board b;
+    
     
     
     
@@ -42,7 +39,7 @@ public class FXMLMenuController{
     private TextField ydim;
     
     @FXML
-    private void submitPuzzleSize(ActionEvent event){
+    private void submitPuzzleSize(ActionEvent event) {
         String x = xdim.getText();
         int x_num = Integer.parseInt((String) x);
         System.out.println("X= "+x_num);
@@ -51,7 +48,12 @@ public class FXMLMenuController{
         int y_num = Integer.parseInt((String) y);
         System.out.println("Y= "+y_num);
         
-       }
+        
+        
+        
+    }
+        
+       
     
     
     
@@ -67,7 +69,17 @@ public class FXMLMenuController{
         stage.show();
     }
     
-    
+    /**
+     *
+     */
+    public class UsesGlobals{
+        private final Globals globals;
+        public UsesGlobals(Globals globals, int x_num, int y_num) {
+            this.globals = globals;
+            globals.w = x_num;
+            globals.h = y_num;
+        }
+    }
     
 
     

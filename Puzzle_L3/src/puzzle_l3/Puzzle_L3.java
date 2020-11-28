@@ -34,4 +34,13 @@ public class Puzzle_L3 extends Application {
         launch(args);
     }
     
+    public class Globals {
+        public int w;
+        public int h;
+        public Scene scene;
+        
+    }
+    
+   
+    
 }

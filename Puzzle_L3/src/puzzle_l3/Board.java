@@ -8,6 +8,7 @@ package puzzle_l3;
 import java.time.Instant;
 import java.util.Random;
 import javafx.scene.canvas.GraphicsContext;
+import puzzle_l3.Puzzle_L3.Globals;
 
 /**
  *
@@ -18,10 +19,20 @@ public class Board {
     int height;
     Tile tabTiles [][];
     Tile vecTiles [];
+    /*public void UsesGlobals(Globals globals) {
+            int width = globals.w;
+            int height = globals.h;
+            System.out.println("w="+width);
+            System.out.println("h="+height);
+    }*/
     
-    public Board(int w, int h){
-        width=w;
-        height=h;
+    public Board(int weight, int height, Globals globals) {
+        //width=w;
+        //height=h;
+        System.out.println(globals.w);
+        System.out.println(globals.h);
+        int w = globals.w;
+        int h = globals.h;
         tabTiles=new Tile[w][h];
         vecTiles=new Tile[w*h];
         for(int j=0;j<height;j++){
@@ -133,6 +144,8 @@ public class Board {
         }
         return buffer;
     }
+    
+    
 
     
 }
