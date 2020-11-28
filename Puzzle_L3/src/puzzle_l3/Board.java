@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
  *
  * @author Mehdi
  */
-public class Board {
+public class Board  implements java.io.Serializable{
     int width;
     int height;
     int tileSize=10;
@@ -42,6 +42,10 @@ public class Board {
         }
         
         
+    }
+
+    Board(String width, String height, String tabTiles, String vecTiles) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     public Board(int w, int h,int tileSize){
         width=w;
@@ -194,6 +198,10 @@ public class Board {
             buffer+='\n';
         }
         return buffer;
+    }
+
+    String getWight() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -9,7 +9,7 @@ package puzzle_l3;
  *
  * @author kelly
  */
-public abstract class Position {
+public abstract class Position  implements java.io.Serializable {
     abstract public double getDistance(Position pos);
     abstract public PosDouble getDirection(Position pos);
     
