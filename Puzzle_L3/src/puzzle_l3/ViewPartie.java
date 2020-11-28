@@ -11,13 +11,13 @@ import javafx.animation.AnimationTimer;
  *
  * @author kerya
  */
-public class View extends AnimationTimer {
+public class ViewPartie extends AnimationTimer {
     
     ScenePartieController controler;
     long previousNow;
     double deltaT;
     
-    public View(ScenePartieController controler)
+    public ViewPartie(ScenePartieController controler)
     {
         super();
         this.controler=controler;
@@ -25,15 +25,16 @@ public class View extends AnimationTimer {
      
     @Override
     public void handle(long now) {
+        /*
         deltaT = (now-previousNow)*Math.pow(10,-9);
         deltaT=deltaT>1?0:deltaT;
         previousNow=now;
-        controler.board.animate(deltaT);
+        controler.board.animate(deltaT);*/
         
         controler.clearCanvas();
         controler.board.draw(controler.canvasPuzzle.getGraphicsContext2D());
         
-        controler.displayTime((int)(now*Math.pow(10,-9)));
+        controler.displayTime((int)(controler.timer.getChrono()));
         //System.out.println(controler.board);
         
         

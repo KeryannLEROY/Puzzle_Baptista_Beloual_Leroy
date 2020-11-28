@@ -8,6 +8,7 @@ package puzzle_l3;
 import java.time.Instant;
 import java.util.Random;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -16,8 +17,10 @@ import javafx.scene.canvas.GraphicsContext;
 public class Board {
     int width;
     int height;
+    int tileSize=10;
     Tile tabTiles [][];
     Tile vecTiles [];
+    Image image;
     
     public Board(int w, int h){
         width=w;
@@ -52,13 +55,19 @@ public class Board {
                     vecTiles[0] = tabTiles[k][j];
                     
                 } else {
-                    tabTiles[k][j] = new CasePleine(k, j, (k+(j*w))+1, this,tileSize);
+                    tabTiles[k][j] = new CasePleine(k, j, (k+(j*w))+1, this);
                     vecTiles[(k+(j*w))+1] = tabTiles[k][j];
                 }
                 
             }
         }
+        this.tileSize=tileSize;
         
+    }
+    
+    public Board(int w, int h,int tileSize,Image image){
+        this(w,h,tileSize);
+        this.image=image;
         
     }
     
@@ -77,6 +86,22 @@ public class Board {
         }
         return completed;
        
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public int getTileSize() {
+        return tileSize;
+    }
+
+    public void setTileSize(int tileSize) {
+        this.tileSize = tileSize;
     }
     
     
@@ -135,14 +160,19 @@ public class Board {
     }
     
     public void draw(GraphicsContext context){
-
-        for(int i=0;i<width*height;++i)
+        if (!isCompleted())
         {
-            vecTiles[i].draw(context);
+            for(int i=0;i<width*height;++i)
+            {
+                vecTiles[i].draw(context);
+            }
+        }else{
+            context.drawImage(image,0, 0, width*tileSize, height*tileSize);
         }
+        
     }
     public void animate(double deltaT){
-
+        
         for(int i=0;i<width*height;++i)
         {
             vecTiles[i].animate(deltaT);

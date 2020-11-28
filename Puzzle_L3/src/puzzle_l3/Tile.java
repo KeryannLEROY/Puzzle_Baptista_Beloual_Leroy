@@ -14,12 +14,14 @@ import javafx.scene.canvas.GraphicsContext;
 public abstract class Tile {
     
     protected PosInt pos;
+    protected PosInt posInit;
     protected  int numero;
     protected  Board board;
     
     public Tile(int x,int y,int num,Board board)
     {
         this.pos = new PosInt(x,y);
+        this.posInit=(PosInt)pos.clone();
         this.numero = num;
         this.board=board;
     }
@@ -49,10 +51,18 @@ public abstract class Tile {
     {
         return this.board;
     }
+
+    public PosInt getPosInit() {
+        return (PosInt) posInit.clone();
+    }
+
+    public int getNumero() {
+        return numero;
+    }
     
     public boolean checkPlacementAbsolute()
     {
-        return pos.getX() ==  (numero-1+getBoard().getWidth()) % getBoard().getWidth() && pos.getY() == (int)((numero-1+(getBoard().getWidth()*getBoard().getHeight()))%(getBoard().getWidth()*getBoard().getHeight()) /getBoard().getWidth());
+        return pos.getX() ==  posInit.getX() && pos.getY() == posInit.getY();
     }
     
     public int checkPlacementRelative()

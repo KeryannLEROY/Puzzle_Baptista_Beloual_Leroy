@@ -5,14 +5,15 @@
  */
 package puzzle_l3;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -22,7 +23,7 @@ import javafx.scene.text.Text;
  *
  * @author kerya
  */
-public class ScenePartieController implements Initializable {
+public class ScenePartieController implements CloseableController {
     
     //variable de substitution ( à remplacer par des variables globale)
     int nbCol=4;
@@ -31,9 +32,10 @@ public class ScenePartieController implements Initializable {
     String gameType="solo";
     //fin variable de substitution
     
-    
+    Timer timer;
     Board board;
-    View view;
+    
+    ViewPartie view;
     
     @FXML
     Canvas canvasPuzzle;
@@ -48,10 +50,10 @@ public class ScenePartieController implements Initializable {
     
     @FXML
     void onKeyTyped(KeyEvent event) {
-        System.out.println("hello!");
+
         
         String s =event.getCharacter();
-        System.out.println(s);
+
         if(!board.isCompleted())
         {
             switch(s)
@@ -86,7 +88,7 @@ public class ScenePartieController implements Initializable {
         
         
     }
-    
+
     
     /**
      * Initializes the controller class.
@@ -98,20 +100,36 @@ public class ScenePartieController implements Initializable {
         canvasPuzzle.setWidth(nbCol*tileSize);
         
         
-        view=new View(this);
-        
-        
-        
+        view=new ViewPartie(this);
         switch(gameType)
         {
             case "solo":initSolo();
             break;
         }
+        Image image = null;
+        try{
+            image=new Image(new FileInputStream("autumn-landscape.jpg"));
+        } catch (FileNotFoundException ex) {
+            
+        }
+        board.setImage(image);
         
         
+        
+        setupTimerBehavior();
         view.start();
         
     }   
+    
+    private void setupTimerBehavior()
+    {
+        timer=new Timer(10);
+        
+        timer.addToBehavior(board, "animate");
+        System.out.println(timer.isRunning());
+        timer.unPause();
+        System.out.println(timer.isRunning());
+    }
     
     private void initSolo()
     {
@@ -133,35 +151,18 @@ public class ScenePartieController implements Initializable {
     
     public void displayTime(int time)
     {
-        timeValueText.setText((time/60)+":"+(time%60));
+        timeValueText.setText((time/60)+":"+(String.format("%02d",time%60)));
     }
     
     
-    private class OnKeyTypedEvent implements EventHandler<KeyEvent>{
+    
 
-        @Override
-        public void handle(KeyEvent event) {
-            System.out.println("hello!");
-            String s =event.getCharacter();
-            System.out.println(s);
-            if(!board.isCompleted())
-            {
-                switch(s)
-                {
-                    case "z":((CaseVide)board.getTile(0)).move(DIRECTION.DOWN);
-                            break;
-                    case "q":((CaseVide)board.getTile(0)).move(DIRECTION.RIGHT);
-                            break;
-                    case "s":((CaseVide)board.getTile(0)).move(DIRECTION.UP);
-                            break;
-                    case "d":((CaseVide)board.getTile(0)).move(DIRECTION.LEFT);
-                            break;
-                }
-            }
-            
-        }
-    
+    public void close() {
+        System.out.println("closing partie controler");
+        timer.pause();
+        System.out.println("partie controler closed");
     }
+    
 }
 
 

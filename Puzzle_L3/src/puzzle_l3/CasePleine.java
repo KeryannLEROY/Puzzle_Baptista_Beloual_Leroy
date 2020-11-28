@@ -24,20 +24,15 @@ public class CasePleine extends Tile{
     private Image image;
     private Color highlight;
     private boolean isHighlighted;
-    private int size;
+
     
     public CasePleine(int x,int y,int num,Board board)
     {
         super(x,y,num,board);
-        this.size = 10;
+
         posGraphic = new PosDouble(x, y);
     }
-    public CasePleine(int x,int y,int num,Board board,int size)
-    {
-        super(x,y,num,board);
-        this.size = size;
-        posGraphic = new PosDouble(x*size, y*size);
-    }
+
 
     public void setImage(Image image) {
         this.image = image;
@@ -47,9 +42,7 @@ public class CasePleine extends Tile{
         this.highlight = highlight;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
+
 
     public PosDouble getPosGraphic(){
         return (PosDouble) posGraphic.clone();
@@ -67,9 +60,7 @@ public class CasePleine extends Tile{
         return isHighlighted;
     }
 
-    public int getSize() {
-        return size;
-    }
+
 
     
         
@@ -129,13 +120,30 @@ public class CasePleine extends Tile{
     @Override
     public void draw(GraphicsContext context)
     {
-        context.setFill(new Color(numero /(float)(board.getHeight()*board.getWidth()),this.checkPlacementAbsolute()?0.5:0,this.checkPlacementAbsolute()?0:0.5,1));
-        context.fillRoundRect(posGraphic.getX()*size, posGraphic.getY()*size, size, size,size/10, size/10);
+        
+        if(this.getBoard().getImage()==null)
+        {
+            context.setFill(new Color(numero /(float)(board.getHeight()*board.getWidth()),this.checkPlacementAbsolute()?0.5:0,this.checkPlacementAbsolute()?0:0.5,1));
+            context.fillRoundRect(posGraphic.getX()*this.board.getTileSize(), posGraphic.getY()*this.board.getTileSize(), this.board.getTileSize(), this.board.getTileSize(),this.board.getTileSize()/10, this.board.getTileSize()/10);
+        }else{
+            //System.out.println(this.getBoard().getImage().getWidth()/this.getBoard().getWidth()*pos.getX()+"    "+this.getBoard().getImage().getWidth()+" "+this.getBoard().getWidth()+" "+pos.getX());
+            context.drawImage(this.getBoard().getImage(), 
+                    this.getBoard().getImage().getWidth()/this.getBoard().getWidth()*posInit.getX(),
+                    this.getBoard().getImage().getHeight()/this.getBoard().getHeight()*posInit.getY(),
+                    this.getBoard().getImage().getWidth()/this.getBoard().getWidth(),
+                    this.getBoard().getImage().getHeight()/this.getBoard().getHeight(),
+                    posGraphic.getX()*this.board.getTileSize(), posGraphic.getY()*this.board.getTileSize(), this.board.getTileSize(), this.board.getTileSize());
+            
+            context.setFill(new Color(0,1,0,this.checkPlacementAbsolute()?0.5:0));
+            context.fillRoundRect(posGraphic.getX()*this.board.getTileSize(), posGraphic.getY()*this.board.getTileSize(), this.board.getTileSize(), this.board.getTileSize(),this.board.getTileSize()/10, this.board.getTileSize()/10);
+            
+        }
+        
     }
 
     @Override
     public void animate(double deltaT) {
-        if(posGraphic.getDistance(pos)<0.1)
+        if(posGraphic.getDistance(pos)<0.01)
         {
             posGraphic.setX(pos.getX());
             posGraphic.setY(pos.getY());
