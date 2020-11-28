@@ -32,9 +32,9 @@ public class ViewPartie extends AnimationTimer {
         controler.board.animate(deltaT);*/
         
         controler.clearCanvas();
-        controler.board.draw(controler.canvasPuzzle.getGraphicsContext2D());
+        controler.partie.getBoard().draw(controler.canvasPuzzle.getGraphicsContext2D());
         
-        controler.displayTime((int)(controler.timer.getChrono()));
+        controler.displayTime((int)(controler.partie.getTimer().getChrono()));
         //System.out.println(controler.board);
         
         

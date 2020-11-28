@@ -32,8 +32,8 @@ public class ScenePartieController implements CloseableController {
     String gameType="solo";
     //fin variable de substitution
     
-    Timer timer;
-    Board board;
+    
+    Partie partie;
     
     ViewPartie view;
     
@@ -54,17 +54,17 @@ public class ScenePartieController implements CloseableController {
         
         String s =event.getCharacter();
 
-        if(!board.isCompleted())
+        if(!partie.getBoard().isCompleted())
         {
             switch(s)
             {
-                case "z":((CaseVide)board.getTile(0)).move(DIRECTION.DOWN);
+                case "z":((CaseVide)partie.getBoard().getTile(0)).move(DIRECTION.DOWN);
                         break;
-                case "q":((CaseVide)board.getTile(0)).move(DIRECTION.RIGHT);
+                case "q":((CaseVide)partie.getBoard().getTile(0)).move(DIRECTION.RIGHT);
                         break;
-                case "s":((CaseVide)board.getTile(0)).move(DIRECTION.UP);
+                case "s":((CaseVide)partie.getBoard().getTile(0)).move(DIRECTION.UP);
                         break;
-                case "d":((CaseVide)board.getTile(0)).move(DIRECTION.LEFT);
+                case "d":((CaseVide)partie.getBoard().getTile(0)).move(DIRECTION.LEFT);
                         break;
             }
         }
@@ -79,7 +79,7 @@ public class ScenePartieController implements CloseableController {
         PosInt posClick= new PosInt((int)(event.getX()*nbCol/canvasPuzzle.getWidth()),(int)(event.getY()*nbLine/canvasPuzzle.getHeight()));
         try{
 
-            ((CasePleine)board.getTile(posClick)).move();
+            ((CasePleine)partie.getBoard().getTile(posClick)).move();
 
         }catch(ClassCastException e){
             
@@ -112,7 +112,7 @@ public class ScenePartieController implements CloseableController {
         } catch (FileNotFoundException ex) {
             
         }
-        board.setImage(image);
+        partie.getBoard().setImage(image);
         
         
         
@@ -125,7 +125,7 @@ public class ScenePartieController implements CloseableController {
     {
         timer=new Timer(10);
         
-        timer.addToBehavior(board, "animate");
+        timer.addToBehavior(partie.getBoard(), "animate");
         System.out.println(timer.isRunning());
         timer.unPause();
         System.out.println(timer.isRunning());
@@ -133,8 +133,8 @@ public class ScenePartieController implements CloseableController {
     
     private void initSolo()
     {
-        board=new Board(nbCol,nbLine,tileSize);
-        board.shuffle(1000);
+        partie.setBoard(new Board(nbCol,nbLine,tileSize));
+        partie.getBoard().shuffle(1000);
     }
     
     

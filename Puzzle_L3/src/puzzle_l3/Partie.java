@@ -10,19 +10,19 @@ package puzzle_l3;
  * @author kelly
  */
 public class Partie  implements java.io.Serializable{
-    int score;
-    int temps;
-    Board board;
+    private int score;
+    private Timer timer;
+    private Board board;
 
-    public Partie(int score, int temps, Board board) {
-        this.score = score;
-        this.temps = temps;
+    public Partie( Board board, Timer timer) {
+        this.score = 0;
+        this.timer=timer;
         this.board = board;
     }
 
     Partie() {
         this.score = 0;
-        this.temps = 0;
+        this.timer= new Timer();
         this.board = new Board(4,4);
     }
     
@@ -35,9 +35,7 @@ public class Partie  implements java.io.Serializable{
           
     }
 
-    public int getTemps() {
-        return temps;
-    }
+    
 
    
     public Board getBoard() {
@@ -48,12 +46,18 @@ public class Partie  implements java.io.Serializable{
         this.score = score;
     }
 
-    public void setTemps(int temps) {
-        this.temps = temps;
-    }
+    
 
     public void setBoard(Board board) {
         this.board = board;
+    }
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
     }
     
     
