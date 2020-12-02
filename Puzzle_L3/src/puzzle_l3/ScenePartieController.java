@@ -75,17 +75,18 @@ public class ScenePartieController implements CloseableController {
     @FXML
     void onCanvasClicked(MouseEvent event)
     {
-        //nbCol nbLine
-        PosInt posClick= new PosInt((int)(event.getX()*nbCol/canvasPuzzle.getWidth()),(int)(event.getY()*nbLine/canvasPuzzle.getHeight()));
-        try{
+        if(!partie.getBoard().isCompleted())
+        {
+            PosInt posClick= new PosInt((int)(event.getX()*nbCol/canvasPuzzle.getWidth()),(int)(event.getY()*nbLine/canvasPuzzle.getHeight()));
+            try{
 
-            ((CasePleine)partie.getBoard().getTile(posClick)).move();
+                ((CasePleine)partie.getBoard().getTile(posClick)).move();
 
-        }catch(ClassCastException e){
-            
-            
+            }catch(ClassCastException e){
+
+
+            }
         }
-        
         
     }
 
@@ -98,7 +99,7 @@ public class ScenePartieController implements CloseableController {
         // TODO initilization de la partie à partir des variables globales
         canvasPuzzle.setHeight(nbLine*tileSize);
         canvasPuzzle.setWidth(nbCol*tileSize);
-        
+        partie=new Partie();
         
         view=new ViewPartie(this);
         switch(gameType)
@@ -123,12 +124,12 @@ public class ScenePartieController implements CloseableController {
     
     private void setupTimerBehavior()
     {
-        timer=new Timer(10);
+        partie.setTimer(new Timer(10));
         
-        timer.addToBehavior(partie.getBoard(), "animate");
-        System.out.println(timer.isRunning());
-        timer.unPause();
-        System.out.println(timer.isRunning());
+        partie.getTimer().addToBehavior(partie.getBoard(), "animate");
+        System.out.println(partie.getTimer().isRunning());
+        partie.getTimer().unPause();
+        System.out.println(partie.getTimer().isRunning());
     }
     
     private void initSolo()
@@ -159,7 +160,7 @@ public class ScenePartieController implements CloseableController {
 
     public void close() {
         System.out.println("closing partie controler");
-        timer.pause();
+        partie.getTimer().pause();
         System.out.println("partie controler closed");
     }
     
