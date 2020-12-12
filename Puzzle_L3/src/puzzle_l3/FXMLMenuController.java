@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import puzzle_l3.Puzzle_L3.Globals;
 
 /**
  *
@@ -43,10 +42,12 @@ public class FXMLMenuController{
         String x = xdim.getText();
         int x_num = Integer.parseInt((String) x);
         System.out.println("X= "+x_num);
+        Puzzle_L3.weight_board=x_num;
         
         String y = ydim.getText();
         int y_num = Integer.parseInt((String) y);
         System.out.println("Y= "+y_num);
+        Puzzle_L3.height_board=y_num;
         
         
         
@@ -61,25 +62,22 @@ public class FXMLMenuController{
     public void jouer(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
+        Stage stage2 = new Stage();
+        stage2.setScene(new Scene(root1));
+        stage2.show();
+        /*Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("ABC");
         stage.setScene(new Scene(root1));  
-        stage.show();
+        stage.show();*/
     }
     
     /**
      *
      */
-    public class UsesGlobals{
-        private final Globals globals;
-        public UsesGlobals(Globals globals, int x_num, int y_num) {
-            this.globals = globals;
-            globals.w = x_num;
-            globals.h = y_num;
-        }
-    }
+    
+    
     
 
     

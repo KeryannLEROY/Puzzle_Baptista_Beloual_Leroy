@@ -17,6 +17,10 @@ import javafx.stage.Stage;
  */
 public class Puzzle_L3 extends Application {
     
+    public static int weight_board = 4;
+    public static int height_board = 4;
+    public static Scene scene;
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLMenu.fxml"));
@@ -34,12 +38,7 @@ public class Puzzle_L3 extends Application {
         launch(args);
     }
     
-    public class Globals {
-        public int w;
-        public int h;
-        public Scene scene;
-        
-    }
+    
     
    
     
