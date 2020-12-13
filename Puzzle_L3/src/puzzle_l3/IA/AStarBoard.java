@@ -3,19 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package puzzle_l3;
+package puzzle_l3.IA;
 
-import javafx.fxml.Initializable;
+import puzzle_l3.Board;
 
 /**
  *
  * @author kerya
  */
-public interface CloseableController extends Initializable {
+public class AStarBoard extends AStar {
     
     /**
      *
+     * @param board
      */
-    public void close();
+    public AStarBoard(Board board) {
+        super();
+        setFirstChild(new StateBoard(this, board));
+    }
     
 }

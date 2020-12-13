@@ -17,6 +17,8 @@ import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import puzzle_l3.IA.AStarBoard;
+import puzzle_l3.IA.StateBoard;
 
 /**
  * FXML Controller class
@@ -29,7 +31,8 @@ public class ScenePartieController implements CloseableController {
     int nbCol=4;
     int nbLine=4;
     int tileSize=100;
-    String gameType="solo";
+    String gameType="soloIA";
+    DIRECTION[] cheminIA;
     //fin variable de substitution
     
     
@@ -93,6 +96,8 @@ public class ScenePartieController implements CloseableController {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -105,6 +110,8 @@ public class ScenePartieController implements CloseableController {
         switch(gameType)
         {
             case "solo":initSolo();
+            break;
+            case "soloIA":initSoloIA();
             break;
         }
         Image image = null;
@@ -137,27 +144,49 @@ public class ScenePartieController implements CloseableController {
         partie.setBoard(new Board(nbCol,nbLine,tileSize));
         partie.getBoard().shuffle(1000);
     }
+    private void initSoloIA()
+    {
+        partie.setBoard(new Board(3,3,tileSize));
+        partie.getBoard().shuffle(1000);
+        
+        AStarBoard aStar=new AStarBoard(partie.getBoard()); 
+        while(!aStar.isFinish())
+        {
+            aStar.computingStep();
+        }
+        
+    }
     
-    
+    /**
+     *
+     */
     public void clearCanvas()
     {
         canvasPuzzle.getGraphicsContext2D().setFill(new Color(1,1,1,1));
         canvasPuzzle.getGraphicsContext2D().fillRect(0,0,canvasPuzzle.getWidth(), canvasPuzzle.getHeight());
     }
     
+    /**
+     *
+     * @param score
+     */
     public void displayScore(int score)
     {
         scoreValueText.setText(""+score);
     }
     
+    /**
+     *
+     * @param time
+     */
     public void displayTime(int time)
     {
         timeValueText.setText((time/60)+":"+(String.format("%02d",time%60)));
     }
     
-    
-    
-
+    /**
+     *
+     */
     public void close() {
         System.out.println("closing partie controler");
         partie.getTimer().pause();

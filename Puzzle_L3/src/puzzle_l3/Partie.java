@@ -14,6 +14,11 @@ public class Partie  implements java.io.Serializable{
     private Timer timer;
     private Board board;
 
+    /**
+     *
+     * @param board
+     * @param timer
+     */
     public Partie( Board board, Timer timer) {
         this.score = 0;
         this.timer=timer;
@@ -26,36 +31,52 @@ public class Partie  implements java.io.Serializable{
         this.board = new Board(4,4);
     }
     
-    
-
-  
+    /**
+     *
+     * @return
+     */
     public int getScore()
     {
         return score;
           
     }
 
-    
-
-   
+    /**
+     *
+     * @return
+     */
     public Board getBoard() {
         return board;
     }
 
+    /**
+     *
+     * @param score
+     */
     public void setScore(int score) {
         this.score = score;
     }
 
-    
-
+    /**
+     *
+     * @param board
+     */
     public void setBoard(Board board) {
         this.board = board;
     }
 
+    /**
+     *
+     * @return
+     */
     public Timer getTimer() {
         return timer;
     }
 
+    /**
+     *
+     * @param timer
+     */
     public void setTimer(Timer timer) {
         this.timer = timer;
     }

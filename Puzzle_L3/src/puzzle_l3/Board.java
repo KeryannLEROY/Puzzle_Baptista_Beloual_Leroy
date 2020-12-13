@@ -14,195 +14,350 @@ import javafx.scene.image.Image;
  *
  * @author Mehdi
  */
-public class Board  implements java.io.Serializable{
-    int width;
-    int height;
-    int tileSize=10;
-    Tile tabTiles [][];
-    Tile vecTiles [];
-    Image image;
-    
-    public Board(int w, int h){
-        width=w;
-        height=h;
-        tabTiles=new Tile[w][h];
-        vecTiles=new Tile[w*h];
-        for(int j=0;j<height;j++){
-            for(int k=0;k<width;k++){
-                if (k==w-1 && j==h-1) {
+public class Board implements java.io.Serializable {
+
+    private int width;
+    private int height;
+    private int tileSize = 10;
+    private Tile tabTiles[][];
+    private Tile vecTiles[];
+    private Image image;
+
+    /**
+     *
+     * @param w
+     * @param h
+     */
+    public Board(int w, int h) {
+        width = w;
+        height = h;
+        tabTiles = new Tile[w][h];
+        vecTiles = new Tile[w * h];
+        for (int j = 0; j < height; j++) {
+            for (int k = 0; k < width; k++) {
+                if (k == w - 1 && j == h - 1) {
                     tabTiles[k][j] = new CaseVide(k, j, 0, this);
                     vecTiles[0] = tabTiles[k][j];
-                    
+
                 } else {
-                    tabTiles[k][j] = new CasePleine(k, j, (k+(j*w))+1, this);
-                    vecTiles[(k+(j*w))+1] = tabTiles[k][j];
+                    tabTiles[k][j] = new CasePleine(k, j, (k + (j * w)) + 1, this);
+                    vecTiles[(k + (j * w)) + 1] = tabTiles[k][j];
                 }
-                
+
             }
         }
-        
-        
+
     }
 
-    Board(String width, String height, String tabTiles, String vecTiles) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    public Board(int w, int h,int tileSize){
-        width=w;
-        height=h;
-        tabTiles=new Tile[w][h];
-        vecTiles=new Tile[w*h];
-        for(int j=0;j<height;j++){
-            for(int k=0;k<width;k++){
-                if (k==w-1 && j==h-1) {
+    /**
+     *
+     * @param b
+     */
+    public Board(Board b) {
+        this.width = b.getWidth();
+        this.height = b.getHeight();
+        this.tileSize = b.getTileSize();
+        this.image = b.getImage();
+
+        tabTiles = new Tile[width][height];
+        vecTiles = new Tile[width * height];
+        for (int j = 0; j < height; j++) {
+            for (int k = 0; k < width; k++) {
+                if (k == width - 1 && j == height - 1) {
                     tabTiles[k][j] = new CaseVide(k, j, 0, this);
                     vecTiles[0] = tabTiles[k][j];
-                    
+
                 } else {
-                    tabTiles[k][j] = new CasePleine(k, j, (k+(j*w))+1, this);
-                    vecTiles[(k+(j*w))+1] = tabTiles[k][j];
+                    tabTiles[k][j] = new CasePleine(k, j, (k + (j * width)) + 1, this);
+                    vecTiles[(k + (j * width)) + 1] = tabTiles[k][j];
                 }
-                
+
             }
         }
-        this.tileSize=tileSize;
-        
+        for(int i=0;i<width*height;++i)
+        {
+            if(vecTiles[i].getPos().getX()!=b.getTile(i).getPos().getX() || vecTiles[i].getPos().getY()!=b.getTile(i).getPos().getY())
+            {
+                swapTiles(vecTiles[i].getPos(), b.getTile(i).getPos());
+            }
+        }
     }
-    
-    public Board(int w, int h,int tileSize,Image image){
-        this(w,h,tileSize);
-        this.image=image;
-        
+
+    /**
+     *
+     * @param w
+     * @param h
+     * @param tileSize
+     */
+    public Board(int w, int h, int tileSize) {
+        width = w;
+        height = h;
+        tabTiles = new Tile[w][h];
+        vecTiles = new Tile[w * h];
+        for (int j = 0; j < height; j++) {
+            for (int k = 0; k < width; k++) {
+                if (k == w - 1 && j == h - 1) {
+                    tabTiles[k][j] = new CaseVide(k, j, 0, this);
+                    vecTiles[0] = tabTiles[k][j];
+
+                } else {
+                    tabTiles[k][j] = new CasePleine(k, j, (k + (j * w)) + 1, this);
+                    vecTiles[(k + (j * w)) + 1] = tabTiles[k][j];
+                }
+
+            }
+        }
+        this.tileSize = tileSize;
+
     }
-    
-    public int getWidth(){
+
+    /**
+     *
+     * @param w
+     * @param h
+     * @param tileSize
+     * @param image
+     */
+    public Board(int w, int h, int tileSize, Image image) {
+        this(w, h, tileSize);
+        this.image = image;
+
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getWidth() {
         return width;
     }
-    
-    public int getHeight(){
+
+    /**
+     *
+     * @return
+     */
+    public int getHeight() {
         return height;
     }
-    
-    public boolean isCompleted(){
-        boolean completed=true;
-        for (int i=0; i<(width*height) && completed;i++){
+
+    /**
+     *
+     * @return
+     */
+    public boolean isCompleted() {
+        boolean completed = true;
+        for (int i = 0; i < (width * height) && completed; i++) {
             completed &= vecTiles[i].checkPlacementAbsolute();
         }
         return completed;
-       
+
     }
 
+    /**
+     *
+     * @return
+     */
+    public int sumRelativePlacement() {
+        int sum = 0;
+        for (Tile tile : vecTiles) {
+            sum += tile.checkPlacementRelative();
+        }
+        return sum;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int sumAbsolutePlacement() {
+        int sum = 0;
+        for (Tile tile : vecTiles) {
+            sum += tile.checkPlacementAbsolute() ? 1 : 0;
+        }
+        return sum;
+    }
+
+    /**
+     *
+     * @return
+     */
     public Image getImage() {
         return image;
     }
 
+    /**
+     *
+     * @param image
+     */
     public void setImage(Image image) {
         this.image = image;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTileSize() {
         return tileSize;
     }
 
+    /**
+     *
+     * @param tileSize
+     */
     public void setTileSize(int tileSize) {
         this.tileSize = tileSize;
     }
-    
-    
-    
-    
+
     /*Méthode our permettre l'échange avec une case qui a la possiblité de bouger
     et la case vide.
-    */ 
-    public void swapTiles(PosInt p1,PosInt p2){
+     */
+    /**
+     *
+     * @param p1
+     * @param p2
+     */
+    public void swapTiles(PosInt p1, PosInt p2) {
         Tile temp = this.getTile(p1);
-        this.tabTiles[p1.getX()][p1.getY()]=this.getTile(p2);
-        this.tabTiles[p2.getX()][p2.getY()]=temp;
-        
+        this.tabTiles[p1.getX()][p1.getY()] = this.getTile(p2);
+        this.tabTiles[p2.getX()][p2.getY()] = temp;
+
         this.getTile(p1).setPos(p1);
 
         this.getTile(p2).setPos(p2);
 
     }
-    
-    
-    public void shuffle(int n){
+
+    /**
+     *
+     * @param n
+     */
+    public void shuffle(int n) {
         Random rand = new Random(Instant.now().getEpochSecond());
-        for (int i=0;i<n;i++) {
+        for (int i = 0; i < n; i++) {
             try {
-                switch(rand.nextInt()%4){
-                    case 0:((CaseVide)vecTiles[0]).move(DIRECTION.UP);
+                switch (rand.nextInt() % 4) {
+                    case 0:
+                        ((CaseVide) vecTiles[0]).move(DIRECTION.UP);
                         break;
-                    case 1:((CaseVide)vecTiles[0]).move(DIRECTION.RIGHT);
+                    case 1:
+                        ((CaseVide) vecTiles[0]).move(DIRECTION.RIGHT);
                         break;
-                    case 2:((CaseVide)vecTiles[0]).move(DIRECTION.DOWN);
+                    case 2:
+                        ((CaseVide) vecTiles[0]).move(DIRECTION.DOWN);
                         break;
-                    case 3:((CaseVide)vecTiles[0]).move(DIRECTION.LEFT);
+                    case 3:
+                        ((CaseVide) vecTiles[0]).move(DIRECTION.LEFT);
                         break;
                 }
-          
-            } catch(ClassCastException e){
+
+            } catch (ClassCastException e) {
                 System.out.println(e.getMessage());
             }
         }
-        
+
     }
-    
-    public Tile getTile(int x,int y)throws IndexOutOfBoundsException
-    {
+
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
+    public Tile getTile(int x, int y) throws IndexOutOfBoundsException {
         return this.tabTiles[x][y];
     }
-    
-    public Tile getTile(PosInt p1)throws IndexOutOfBoundsException
-    {
-        return getTile(p1.getX(),p1.getY());
+
+    /**
+     *
+     * @param p1
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
+    public Tile getTile(PosInt p1) throws IndexOutOfBoundsException {
+        return getTile(p1.getX(), p1.getY());
     }
-    
-    public Tile getTile(int num)throws IndexOutOfBoundsException
-    {
+
+    /**
+     *
+     * @param num
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
+    public Tile getTile(int num) throws IndexOutOfBoundsException {
         return vecTiles[num];
     }
-    
-    public void draw(GraphicsContext context){
-        if (!isCompleted())
-        {
-            for(int i=0;i<width*height;++i)
-            {
+
+    /**
+     *
+     * @param context
+     */
+    public void draw(GraphicsContext context) {
+        if (!isCompleted()) {
+            for (int i = 0; i < width * height; ++i) {
                 vecTiles[i].draw(context);
             }
-        }else{
-            context.drawImage(image,0, 0, width*tileSize, height*tileSize);
+        } else {
+            context.drawImage(image, 0, 0, width * tileSize, height * tileSize);
         }
-        
+
     }
-    public void animate(double deltaT){
-        
-        for(int i=0;i<width*height;++i)
-        {
+
+    /**
+     *
+     * @param deltaT
+     */
+    public void animate(double deltaT) {
+
+        for (int i = 0; i < width * height; ++i) {
             vecTiles[i].animate(deltaT);
         }
     }
-    
-    
+
     @Override
-    public String toString(){
-        String buffer= new String();
-        for( int y=0;y<getWidth();++y)
-        {
-            for( int x=0;x<getHeight();++x)
-            {
-                buffer+=' ';
-                buffer+=this.getTile(x, y);
-                buffer+=' ';
+    public String toString() {
+        String buffer = new String();
+        for (int y = 0; y < getWidth(); ++y) {
+            for (int x = 0; x < getHeight(); ++x) {
+                buffer += ' ';
+                buffer += this.getTile(x, y);
+                buffer += ' ';
             }
-            buffer+='\n';
+            buffer += '\n';
         }
         return buffer;
     }
 
-    String getWight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     *
+     * @return
+     */
+    public Tile[][] getTabTiles() {
+        return tabTiles.clone();
     }
 
-    
+    @Override
+    public boolean equals(Object obj) {
+
+        boolean equal = true;
+
+        if (obj.getClass().getName() == this.getClass().getName()) {
+            Tile[][] tiles = ((Board) obj).getTabTiles();
+
+            for (int x = 0; x < this.getWidth(); ++x) {
+                for (int y = 0; y < this.getHeight(); ++y) {
+
+                    if (tabTiles[x][y].getNum() != tiles[x][y].getNum()) {
+                        equal = false;
+                    }
+                }
+            }
+        } else {
+            equal = false;
+        }
+
+        return equal;
+    }
+
 }

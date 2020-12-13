@@ -17,6 +17,10 @@ public class ViewPartie extends AnimationTimer {
     long previousNow;
     double deltaT;
     
+    /**
+     *
+     * @param controler
+     */
     public ViewPartie(ScenePartieController controler)
     {
         super();

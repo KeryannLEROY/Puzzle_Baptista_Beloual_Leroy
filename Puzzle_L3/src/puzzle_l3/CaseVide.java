@@ -13,39 +13,51 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public class CaseVide extends Tile{ 
     
+    /**
+     *
+     * @param x
+     * @param y
+     * @param num
+     * @param board
+     */
     public CaseVide(int x,int y,int num,Board board)
     {
         super(x,y,num,board);
     }
     
+    /**
+     *
+     * @param dir
+     * @return
+     */
     public boolean move(DIRECTION dir)
     {
         boolean valid=false;
         switch(dir)
         {
             case UP:
-                if(getPos().getY()!=0)
+                if(getPos().getY()>0)
                 {
                     getBoard().swapTiles(pos,new PosInt(pos.getX(),pos.getY()-1));
                     valid=true;
                 }
                 break;
             case RIGHT:
-                if(getPos().getX()!=getBoard().getWidth()-1)
+                if(getPos().getX()<getBoard().getWidth()-1)
                 {
                     getBoard().swapTiles(pos,new PosInt(pos.getX()+1,pos.getY()));
                     valid=true;
                 }
                 break;
             case DOWN:
-                if(getPos().getY()!=getBoard().getHeight()-1)
+                if(getPos().getY()<getBoard().getHeight()-1)
                 {
                     getBoard().swapTiles(pos,new PosInt(pos.getX(),pos.getY()+1));
                     valid=true;
                 }
                 break;
             case LEFT:
-                if(getPos().getX()!=0)
+                if(getPos().getX()>0)
                 {
                     getBoard().swapTiles(pos,new PosInt(pos.getX()-1,pos.getY()));
                     valid=true;
@@ -55,12 +67,20 @@ public class CaseVide extends Tile{
         return valid;
     }
     
+    /**
+     *
+     * @param context
+     */
     @Override
     public void draw(GraphicsContext context)
     {
         
     }
 
+    /**
+     *
+     * @param deltaT
+     */
     @Override
     public void animate(double deltaT) {
         
