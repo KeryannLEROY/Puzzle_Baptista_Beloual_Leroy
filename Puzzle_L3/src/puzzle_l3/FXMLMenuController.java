@@ -11,14 +11,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
- *
+ *Fonctions liées aux boutons du menu principal
  * @author Mehdi
  */
 public class FXMLMenuController{
@@ -32,32 +32,54 @@ public class FXMLMenuController{
     private Button mButton;
     
     @FXML
-    private TextField xdim;
+    private TextField xydim;
     
     @FXML
-    private TextField ydim;
+    private TextField erreur;
     
+    
+    /**
+     *Envoi de la nouvelle dimension vers la variable globale pour la modification des dimensions du puzzle
+     * @param event - Lorsque l'utilisateur clique sur le bouton "Options"
+     * Enclenchement d'une erreur avec un trycatch si la valeur entrée est inférieure à 2 ou si elle n'est pas un nombre.
+     */
     @FXML
     private void submitPuzzleSize(ActionEvent event) {
-        String x = xdim.getText();
-        int x_num = Integer.parseInt((String) x);
-        System.out.println("X= "+x_num);
-        Puzzle_L3.weight_board=x_num;
+        try {
+            
+            String x = xydim.getText();
+            int x_num = Integer.parseInt((String) x);
+            if (x_num<2) {
+                int error=0/0;
+            }
+            Puzzle_L3.weight_board=x_num;
+            
         
-        String y = ydim.getText();
-        int y_num = Integer.parseInt((String) y);
-        System.out.println("Y= "+y_num);
-        Puzzle_L3.height_board=y_num;
-        
-        
-        
-        
+            String y = xydim.getText();
+            int y_num = Integer.parseInt((String) y);
+            Puzzle_L3.height_board=y_num;
+            
+            Alert errorAlert = new Alert(AlertType.INFORMATION);
+            errorAlert.setHeaderText("Modification de la dimension");
+            errorAlert.setContentText("La modification de la dimension du puzzle s'est correctement effectuée.");
+            errorAlert.showAndWait();
+            
+        }
+        catch(Exception e) {
+            System.out.println("Vous devez entrer un nombre (supérieur à 2)");
+            
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Erreur d'entrée");
+            errorAlert.setContentText("Veuillez entrer un nombre pour les 2 dimensions (supérieur à 2)");
+            errorAlert.showAndWait();
+        }   
     }
         
-       
-    
-    
-    
+    /**
+     *Ouverture du fichier FXMLDocument pour le lancement du jeu
+     * @param event - Lorsque l'utilisateur clique sur le bouton "Jouer"
+     * @throws IOException
+     */
     @FXML
     public void jouer(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
@@ -65,17 +87,9 @@ public class FXMLMenuController{
         Stage stage2 = new Stage();
         stage2.setScene(new Scene(root1));
         stage2.show();
-        /*Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle("ABC");
-        stage.setScene(new Scene(root1));  
-        stage.show();*/
     }
     
-    /**
-     *
-     */
+    
     
     
     

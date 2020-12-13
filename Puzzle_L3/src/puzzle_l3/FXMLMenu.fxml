@@ -12,19 +12,22 @@
     <children>
         
         
-        <Button fx:id="buttonj" layoutX="260" layoutY="210" text="Jouer" onAction="#jouer"/>
+        
+        <Text text="TAQUIN" layoutX="260" layoutY="100"/>
+        
+         
+        
+        
+        <Button fx:id="buttonj" layoutX="260" layoutY="150" text="Jouer" onAction="#jouer"/>
         <Label fx:id="labelj" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
         
-        <Button fx:id="buttono" layoutX="260" layoutY="255" text="Options" />
-        <Label fx:id="labelo" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
         
         
-        <Text text="X" layoutX="360" layoutY="315"/>
-        <TextField layoutX="390" layoutY="295" fx:id="xdim"/>
+        <Text text="Hauteur et largeur du puzzle" layoutX="210" layoutY="245"/>
+        <TextField layoutX="210" layoutY="255" fx:id="xydim"/>
         
         
-        <Text text="Y" layoutX="360" layoutY="355" />
-        <TextField layoutX="390" layoutY="335" fx:id="ydim"/>
+        
  
         
         <Button fx:id="buttonm" layoutX="260" layoutY="305" text="Modifier" onAction="#submitPuzzleSize"/>

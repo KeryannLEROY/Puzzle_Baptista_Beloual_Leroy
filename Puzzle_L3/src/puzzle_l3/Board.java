@@ -77,7 +77,10 @@ public class Board {
         this.getTile(p2).setPos(p2);
     }
     
-    
+    /**
+     *
+     * @param n
+     */
     public void shuffle(int n){
         Random rand = new Random(Instant.now().getEpochSecond());
         for (int i=0;i<n;i++) {
