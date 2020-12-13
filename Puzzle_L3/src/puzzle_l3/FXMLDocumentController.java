@@ -68,7 +68,7 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        b= new Board(4,4);
+        b= new Board(Puzzle_L3.width_board,Puzzle_L3.height_board);
         b.shuffle(100);
         System.out.println(b);
     }    

@@ -26,10 +26,8 @@ import javafx.scene.text.Text;
 public class ScenePartieController implements CloseableController {
     
     //variable de substitution ( à remplacer par des variables globale)
-    int nbCol=4;
-    int nbLine=4;
-    int tileSize=100;
-    String gameType="solo";
+
+
     //fin variable de substitution
     
     
@@ -77,7 +75,7 @@ public class ScenePartieController implements CloseableController {
     {
         if(!partie.getBoard().isCompleted())
         {
-            PosInt posClick= new PosInt((int)(event.getX()*nbCol/canvasPuzzle.getWidth()),(int)(event.getY()*nbLine/canvasPuzzle.getHeight()));
+            PosInt posClick= new PosInt((int)(event.getX()*Puzzle_L3.width_board/canvasPuzzle.getWidth()),(int)(event.getY()*Puzzle_L3.height_board/canvasPuzzle.getHeight()));
             try{
 
                 ((CasePleine)partie.getBoard().getTile(posClick)).move();
@@ -97,12 +95,12 @@ public class ScenePartieController implements CloseableController {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO initilization de la partie à partir des variables globales
-        canvasPuzzle.setHeight(nbLine*tileSize);
-        canvasPuzzle.setWidth(nbCol*tileSize);
+        canvasPuzzle.setHeight(Puzzle_L3.height_board*Puzzle_L3.tileSize);
+        canvasPuzzle.setWidth(Puzzle_L3.width_board*Puzzle_L3.tileSize);
         partie=new Partie();
         
         view=new ViewPartie(this);
-        switch(gameType)
+        switch(Puzzle_L3.gameType)
         {
             case "solo":initSolo();
             break;
@@ -134,7 +132,7 @@ public class ScenePartieController implements CloseableController {
     
     private void initSolo()
     {
-        partie.setBoard(new Board(nbCol,nbLine,tileSize));
+        partie.setBoard(new Board(Puzzle_L3.width_board,Puzzle_L3.height_board,Puzzle_L3.tileSize));
         partie.getBoard().shuffle(1000);
     }
     

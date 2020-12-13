@@ -20,13 +20,20 @@ import javafx.stage.WindowEvent;
  */
 public class Puzzle_L3 extends Application {
     
+    public static int width_board = 4;
+    public static int height_board = 4;
+    public static int tileSize=100;
+    public static String gameType="solo";
+    public static Stage stage;
+    public static FXMLLoader fxmlLoader;
+    
+    
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getClass().getResource("scenePartie.fxml").openStream());
+        Puzzle_L3.stage=stage;
+        fxmlLoader = new FXMLLoader();
+        Parent root = fxmlLoader.load(getClass().getResource("FXMLMenu.fxml").openStream());
         Scene scene = new Scene(root);
-        scene.addEventFilter(KeyEvent.KEY_TYPED,
-                (KeyEvent event) -> ((ScenePartieController) fxmlLoader.getController()).onKeyTyped(event));
         stage.setScene(scene);
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -52,5 +59,9 @@ public class Puzzle_L3 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+    
+    
+   
     
 }

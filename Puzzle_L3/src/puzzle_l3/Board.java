@@ -125,7 +125,10 @@ public class Board  implements java.io.Serializable{
 
     }
     
-    
+    /**
+     *
+     * @param n
+     */
     public void shuffle(int n){
         Random rand = new Random(Instant.now().getEpochSecond());
         for (int i=0;i<n;i++) {
