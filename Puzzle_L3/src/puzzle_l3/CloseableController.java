@@ -12,7 +12,7 @@ import javafx.fxml.Initializable;
  * @author kerya
  */
 public interface CloseableController extends Initializable {
-    
+     //
     public void close();
     
 }

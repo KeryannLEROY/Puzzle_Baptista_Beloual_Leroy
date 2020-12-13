@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
  * @author Mehdi
  */
 public class Board  implements java.io.Serializable{
+    //
     int width;
     int height;
     int tileSize=10;

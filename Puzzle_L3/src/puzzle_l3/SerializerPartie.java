@@ -15,7 +15,7 @@ import java.io.ObjectOutputStream;
 public class SerializerPartie {
    
     public static void serialize(Partie partie) {
-       
+       //
         ObjectOutputStream oos = null;
         try {
             final FileOutputStream fichier = new FileOutputStream("partie.ser");

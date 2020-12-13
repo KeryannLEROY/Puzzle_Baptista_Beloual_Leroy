@@ -24,7 +24,7 @@ import javafx.scene.text.Text;
  * @author kerya
  */
 public class ScenePartieController implements CloseableController {
-    
+    //
     //variable de substitution ( à remplacer par des variables globale)
 
 

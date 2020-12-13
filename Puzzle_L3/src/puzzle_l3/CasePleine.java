@@ -17,7 +17,7 @@ import javafx.scene.paint.Color;
  * @author keryann
  */
 public class CasePleine extends Tile{
-    
+    //
     
     private PosDouble posGraphic;
 

@@ -26,7 +26,7 @@ import static puzzle_l3.Puzzle_L3.fxmlLoader;
  * @author Mehdi
  */
 public class FXMLMenuController implements CloseableController{
-    
+    //
     
     
     

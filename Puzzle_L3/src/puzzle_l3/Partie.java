@@ -10,6 +10,7 @@ package puzzle_l3;
  * @author kelly
  */
 public class Partie  implements java.io.Serializable{
+    //
     private int score;
     private Timer timer;
     private Board board;

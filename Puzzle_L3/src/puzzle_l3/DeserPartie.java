@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
  * @author kelly
  */
 public class DeserPartie {
+    //
     public static Partie deserialize() {
         Partie partie = new Partie();
         ObjectOutputStream oos = null;

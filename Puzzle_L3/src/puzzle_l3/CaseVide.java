@@ -12,7 +12,7 @@ import javafx.scene.canvas.GraphicsContext;
  * @author keryann
  */
 public class CaseVide extends Tile{ 
-    
+    //
     public CaseVide(int x,int y,int num,Board board)
     {
         super(x,y,num,board);

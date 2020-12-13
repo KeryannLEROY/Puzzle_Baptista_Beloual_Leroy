@@ -10,6 +10,7 @@ package puzzle_l3;
  * @author kelly
  */
 public class PosDouble extends Position{
+    //
     private double x;
     private double y;
 

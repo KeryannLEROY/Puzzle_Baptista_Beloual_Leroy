@@ -18,7 +18,7 @@ import javafx.scene.input.KeyEvent;
  * @author 
  */
 public class FXMLDocumentController implements Initializable {
-    
+    //
     private Board b;
     
     @FXML

@@ -14,4 +14,5 @@ public enum DIRECTION {
     RIGHT,
     DOWN,
     LEFT
+    //
 }

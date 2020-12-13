@@ -19,6 +19,7 @@ import javafx.stage.WindowEvent;
  * @author 
  */
 public class Puzzle_L3 extends Application {
+    //
     
     public static int width_board = 4;
     public static int height_board = 4;

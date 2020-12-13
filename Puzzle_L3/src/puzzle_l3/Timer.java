@@ -19,6 +19,7 @@ import java.util.logging.Logger;
  */
 public class Timer implements Runnable
 {    
+    //
     Thread thread;
     long previousDate;
     boolean running;

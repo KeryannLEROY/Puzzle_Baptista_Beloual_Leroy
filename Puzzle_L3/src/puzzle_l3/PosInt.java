@@ -10,6 +10,8 @@ package puzzle_l3;
  * @author kelly
  */
 public class PosInt extends Position{
+    
+    //
     private int x;
     private int y;
 

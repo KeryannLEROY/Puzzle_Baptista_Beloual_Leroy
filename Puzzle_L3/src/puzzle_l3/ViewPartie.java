@@ -12,7 +12,7 @@ import javafx.animation.AnimationTimer;
  * @author kerya
  */
 public class ViewPartie extends AnimationTimer {
-    
+    //
     ScenePartieController controler;
     long previousNow;
     double deltaT;
