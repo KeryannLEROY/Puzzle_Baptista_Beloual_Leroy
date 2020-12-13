@@ -6,6 +6,8 @@
 package puzzle_l3;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +25,7 @@ import static puzzle_l3.Puzzle_L3.fxmlLoader;
  *Fonctions liées aux boutons du menu principal
  * @author Mehdi
  */
-public class FXMLMenuController{
+public class FXMLMenuController implements CloseableController{
     
     
     
@@ -93,6 +95,16 @@ public class FXMLMenuController{
                 (KeyEvent e) -> ((ScenePartieController) fxmlLoader.getController()).onKeyTyped(e));
 
         Puzzle_L3.stage.show();
+    }
+
+    @Override
+    public void close() {
+        
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
     }
     
     
