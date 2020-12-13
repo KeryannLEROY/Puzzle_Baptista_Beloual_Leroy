@@ -97,6 +97,9 @@ public class FXMLMenuController implements CloseableController{
         Puzzle_L3.stage.show();
     }
 
+    /**
+     *
+     */
     @Override
     public void close() {
         

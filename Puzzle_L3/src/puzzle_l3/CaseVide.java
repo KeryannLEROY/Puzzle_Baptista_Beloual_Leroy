@@ -13,11 +13,24 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public class CaseVide extends Tile{ 
     //
+
+    /**
+     *
+     * @param x
+     * @param y
+     * @param num
+     * @param board
+     */
     public CaseVide(int x,int y,int num,Board board)
     {
         super(x,y,num,board);
     }
     
+    /**
+     *
+     * @param dir
+     * @return
+     */
     public boolean move(DIRECTION dir)
     {
         boolean valid=false;

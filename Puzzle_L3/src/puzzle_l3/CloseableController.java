@@ -13,6 +13,10 @@ import javafx.fxml.Initializable;
  */
 public interface CloseableController extends Initializable {
      //
+
+    /**
+     *
+     */
     public void close();
     
 }

@@ -28,12 +28,20 @@ public class Timer implements Runnable
     double chrono;
     HashMap<Object,ArrayList<Method>> methods= new HashMap<>();
     
+    /**
+     *
+     */
     public Timer()
     {
         timeOut=0;
         deltaT=0;
         running=false;
     }
+
+    /**
+     *
+     * @param milliseconds
+     */
     public Timer(int milliseconds)
     {
         timeOut=(milliseconds<0?0:milliseconds)/1000.0;
@@ -61,14 +69,28 @@ public class Timer implements Runnable
             }
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public boolean isRunning() 
     {
         return running;
     }
+
+    /**
+     *
+     */
     public void onOffSwitch()
     {
         this.setRunning(!running);
     }
+
+    /**
+     *
+     * @param running
+     */
     public void setRunning(boolean running) 
     {
         if(running)
@@ -80,11 +102,19 @@ public class Timer implements Runnable
             this.pause();         
         }
     }
+
+    /**
+     *
+     */
     public void pause() 
     {
         this.running = false;
         thread=null;
     }
+
+    /**
+     *
+     */
     public void unPause() 
     {
         this.running = true;
@@ -94,18 +124,38 @@ public class Timer implements Runnable
         thread.start();
         
     }
+
+    /**
+     *
+     * @return
+     */
     public double getTimeOut() 
     {
         return timeOut;
     }
+
+    /**
+     *
+     * @param milliseconds
+     */
     public void setTimeOut(int milliseconds) 
     {
         this.setTimeOut(milliseconds/1000.0);
     }
+
+    /**
+     *
+     * @param timeOut
+     */
     public void setTimeOut(double timeOut) 
     {
         this.timeOut = timeOut<0?0:timeOut;
     }
+
+    /**
+     *
+     * @param chrono
+     */
     public void setChrono(double chrono) 
     {
         if(!running)
@@ -113,10 +163,19 @@ public class Timer implements Runnable
         else
             throw new UnsupportedOperationException("This method cannot be used unless the Timer is stopped.");
     }
+
+    /**
+     *
+     * @return
+     */
     public double getChrono() 
     {
         return chrono;
     }
+
+    /**
+     *
+     */
     public void clearBehavior()
     {
         if(!running)
@@ -124,6 +183,11 @@ public class Timer implements Runnable
         else
             throw new UnsupportedOperationException("This method cannot be used unless the Timer is stopped.");
     }
+
+    /**
+     *
+     * @param object
+     */
     public void removeFromBehavior(Object object)
     {
         if(!running)
@@ -131,6 +195,12 @@ public class Timer implements Runnable
         else
             throw new UnsupportedOperationException("This method cannot be used unless the Timer is stopped.");
     }
+
+    /**
+     *
+     * @param object
+     * @param method
+     */
     public void addToBehavior(Object object,String method)
     {
         method+=("(double)");
@@ -160,6 +230,11 @@ public class Timer implements Runnable
         else
             throw new UnsupportedOperationException("This method cannot be used unless the Timer is stopped.");
     }
+
+    /**
+     *
+     * @param deltaT
+     */
     protected void behavior(double deltaT)
     {
         class CallToMethods implements BiConsumer<Object, ArrayList<Method>>

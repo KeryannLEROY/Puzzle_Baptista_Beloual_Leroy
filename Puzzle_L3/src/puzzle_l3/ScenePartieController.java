@@ -57,16 +57,20 @@ public class ScenePartieController implements CloseableController {
             switch(s)
             {
                 case "z":((CaseVide)partie.getBoard().getTile(0)).move(DIRECTION.DOWN);
+                partie.setScore(partie.getScore()+1);
                         break;
                 case "q":((CaseVide)partie.getBoard().getTile(0)).move(DIRECTION.RIGHT);
+                partie.setScore(partie.getScore()+1);
                         break;
                 case "s":((CaseVide)partie.getBoard().getTile(0)).move(DIRECTION.UP);
+                partie.setScore(partie.getScore()+1);
                         break;
                 case "d":((CaseVide)partie.getBoard().getTile(0)).move(DIRECTION.LEFT);
+                partie.setScore(partie.getScore()+1);
                         break;
             }
         }
-         
+        
         
     }
     
@@ -79,6 +83,7 @@ public class ScenePartieController implements CloseableController {
             try{
 
                 ((CasePleine)partie.getBoard().getTile(posClick)).move();
+                partie.setScore(partie.getScore()+1);
 
             }catch(ClassCastException e){
 
@@ -91,6 +96,8 @@ public class ScenePartieController implements CloseableController {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -136,26 +143,36 @@ public class ScenePartieController implements CloseableController {
         partie.getBoard().shuffle(1000);
     }
     
-    
+    /**
+     *
+     */
     public void clearCanvas()
     {
         canvasPuzzle.getGraphicsContext2D().setFill(new Color(1,1,1,1));
         canvasPuzzle.getGraphicsContext2D().fillRect(0,0,canvasPuzzle.getWidth(), canvasPuzzle.getHeight());
     }
     
+    /**
+     *
+     * @param score
+     */
     public void displayScore(int score)
     {
         scoreValueText.setText(""+score);
     }
     
+    /**
+     *
+     * @param time
+     */
     public void displayTime(int time)
     {
         timeValueText.setText((time/60)+":"+(String.format("%02d",time%60)));
     }
     
-    
-    
-
+    /**
+     *
+     */
     public void close() {
         System.out.println("closing partie controler");
         partie.getTimer().pause();

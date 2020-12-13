@@ -25,7 +25,13 @@ public class CasePleine extends Tile{
     private Color highlight;
     private boolean isHighlighted;
 
-    
+    /**
+     *
+     * @param x
+     * @param y
+     * @param num
+     * @param board
+     */
     public CasePleine(int x,int y,int num,Board board)
     {
         super(x,y,num,board);
@@ -33,37 +39,58 @@ public class CasePleine extends Tile{
         posGraphic = new PosDouble(x, y);
     }
 
-
+    /**
+     *
+     * @param image
+     */
     public void setImage(Image image) {
         this.image = image;
     }
 
+    /**
+     *
+     * @param highlight
+     */
     public void setHighlight(Color highlight) {
         this.highlight = highlight;
     }
 
-
-
+    /**
+     *
+     * @return
+     */
     public PosDouble getPosGraphic(){
         return (PosDouble) posGraphic.clone();
     }
 
+    /**
+     *
+     * @return
+     */
     public Image getImage() {
         return  image;
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getHighlight() {
         return highlight;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isIsHighlighted() {
         return isHighlighted;
     }
 
-
-
-    
-        
+    /**
+     *
+     * @return
+     */
     public boolean move()
     {
         ArrayList<Tile> voisins=new ArrayList<Tile>(4);
@@ -107,11 +134,19 @@ public class CasePleine extends Tile{
         return false;
     }
     
+    /**
+     *
+     * @param col
+     */
     public void setHighlightColor(Color col)
     {
         highlight=col;
     }
     
+    /**
+     *
+     * @param toggled
+     */
     public void toggleHighlight(boolean toggled)
     {
         isHighlighted=toggled;

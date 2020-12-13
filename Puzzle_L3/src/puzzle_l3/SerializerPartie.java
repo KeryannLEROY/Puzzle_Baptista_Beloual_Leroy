@@ -14,6 +14,10 @@ import java.io.ObjectOutputStream;
  */
 public class SerializerPartie {
    
+    /**
+     *
+     * @param partie
+     */
     public static void serialize(Partie partie) {
        //
         ObjectOutputStream oos = null;

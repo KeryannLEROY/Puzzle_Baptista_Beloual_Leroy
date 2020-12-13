@@ -10,9 +10,25 @@ package puzzle_l3;
  * @author kerya
  */
 public enum DIRECTION {
+
+    /**
+     *
+     */
     UP,
+
+    /**
+     *
+     */
     RIGHT,
+
+    /**
+     *
+     */
     DOWN,
+
+    /**
+     *
+     */
     LEFT
     //
 }

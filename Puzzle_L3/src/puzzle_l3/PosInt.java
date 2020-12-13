@@ -15,28 +15,53 @@ public class PosInt extends Position{
     private int x;
     private int y;
 
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public PosInt(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    
+    /**
+     *
+     * @return
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     *
+     * @param x
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     *
+     * @param y
+     */
     public void setY(int y) {
         this.y = y;
     }
 
+    /**
+     *
+     * @param pos
+     * @return
+     */
     @Override
     public double getDistance(Position pos) {
         double distance = 0;
@@ -53,6 +78,11 @@ public class PosInt extends Position{
         return distance;
     }
 
+    /**
+     *
+     * @param pos
+     * @return
+     */
     @Override
     public PosDouble getDirection(Position pos) {
          PosDouble direction;

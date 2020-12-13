@@ -17,6 +17,10 @@ public class ViewPartie extends AnimationTimer {
     long previousNow;
     double deltaT;
     
+    /**
+     *
+     * @param controler
+     */
     public ViewPartie(ScenePartieController controler)
     {
         super();
@@ -35,6 +39,7 @@ public class ViewPartie extends AnimationTimer {
         controler.partie.getBoard().draw(controler.canvasPuzzle.getGraphicsContext2D());
         
         controler.displayTime((int)(controler.partie.getTimer().getChrono()));
+        controler.displayScore((int)(controler.partie.getScore()));
         //System.out.println(controler.board);
         
         
