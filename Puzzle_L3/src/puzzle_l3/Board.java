@@ -159,12 +159,12 @@ public class Board  implements java.io.Serializable{
     
     
     
-    /*Méthode our permettre l'échange avec une case qui a la possiblité de bouger
-    et la case vide.
-    */ 
+    
+    
 
     /**
-     *
+     *  Méthode our permettre l'échange avec une case qui a la possiblité de bouger
+     *  et la case vide.
      * @param p1
      * @param p2
      */

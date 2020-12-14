@@ -26,11 +26,11 @@ public class CasePleine extends Tile{
     private boolean isHighlighted;
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param num
-     * @param board
+     * constructeur de la classe CasePleine.
+     * @param x coordonnée x de la case(entier).
+     * @param y coordonnée Y de la case(entier).
+     * @param num numero identifiant.
+     * @param board Board dans lequel la case est contenu.
      */
     public CasePleine(int x,int y,int num,Board board)
     {
@@ -40,7 +40,7 @@ public class CasePleine extends Tile{
     }
 
     /**
-     *
+     * Modificateur de l'image de la case
      * @param image
      */
     public void setImage(Image image) {
@@ -48,7 +48,7 @@ public class CasePleine extends Tile{
     }
 
     /**
-     *
+     *  
      * @param highlight
      */
     public void setHighlight(Color highlight) {
@@ -56,7 +56,7 @@ public class CasePleine extends Tile{
     }
 
     /**
-     *
+     * 
      * @return
      */
     public PosDouble getPosGraphic(){
@@ -64,7 +64,7 @@ public class CasePleine extends Tile{
     }
 
     /**
-     *
+     * Accesseur de la position de l'image de la case
      * @return
      */
     public Image getImage() {
@@ -88,8 +88,8 @@ public class CasePleine extends Tile{
     }
 
     /**
-     *
-     * @return
+     * Gere les déplacement de la case. Si le depacement ne peut pas être executé renvoie faux.
+     * @return booléen
      */
     public boolean move()
     {
@@ -134,14 +134,6 @@ public class CasePleine extends Tile{
         return false;
     }
     
-    /**
-     *
-     * @param col
-     */
-    public void setHighlightColor(Color col)
-    {
-        highlight=col;
-    }
     
     /**
      *
