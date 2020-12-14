@@ -8,37 +8,37 @@ package puzzle_l3;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
- *
+ *  Classe représentant une case du puzzle
  * @author keryann
  */
 public abstract class Tile  implements java.io.Serializable{
     //
     /**
-     *
+     *  Position de la case dans la grille du puzzle.
      */
     protected PosInt pos;
 
     /**
-     *
+     *  Position de la case dans la grille du puzzle.
      */
     protected PosInt posInit;
 
     /**
-     *
+     *  Identifiant de la case.
      */
     protected  int numero;
 
     /**
-     *
+     *  Board dans lequel la case est contenu.
      */
     protected  Board board;
     
     /**
-     *
-     * @param x
-     * @param y
-     * @param num
-     * @param board
+     *  Constructeur de la classe Tile.
+     * @param x coordonnée x de la case(entier).
+     * @param y coordonnée Y de la case(entier).
+     * @param num numero identifiant.
+     * @param board Board dans lequel la case est contenu.
      */
     public Tile(int x,int y,int num,Board board)
     {
@@ -50,8 +50,8 @@ public abstract class Tile  implements java.io.Serializable{
 
     
     /**
-     *
-     * @return
+     *  Accesseur à l'attribut position.
+     * @return Position de la case(Posint)
      */
     public PosInt getPos()
     {
@@ -59,9 +59,9 @@ public abstract class Tile  implements java.io.Serializable{
     }
     
     /**
-     *
-     * @param x
-     * @param y
+     *  Modificateur à l'attribut position.
+     * @param x nouvelle coordonnée x
+     * @param y nouvelle coordonnée y
      */
     public void setPos(int x,int y) 
     {
@@ -70,8 +70,8 @@ public abstract class Tile  implements java.io.Serializable{
     }
     
     /**
-     *
-     * @param nPos
+     *  Modificateur à l'attribut position.
+     * @param nPos nouvelle position de la case.
      */
     public void setPos(PosInt nPos)
     {
@@ -79,8 +79,8 @@ public abstract class Tile  implements java.io.Serializable{
     }
     
     /**
-     *
-     * @return
+     *  Accesseur à l'attribut Numero.
+     * @return numero de la case(entier)
      */
     public int getNum()
     {
@@ -88,9 +88,9 @@ public abstract class Tile  implements java.io.Serializable{
     }
     
     /**
-     *  
+     *  Accesseur au Board dans lequel la case est contenu.
      * 
-     * @return
+     * @return conteneur de la case
      */
     public Board getBoard()
     {
@@ -98,24 +98,19 @@ public abstract class Tile  implements java.io.Serializable{
     }
 
     /**
-     *
-     * @return
+     *  Accesseur à l'attribut position initiale.
+     * @return position Initiale(PosInt)
      */
     public PosInt getPosInit() {
         return (PosInt) posInit.clone();
     }
 
-    /**
-     *
-     * @return
-     */
-    public int getNumero() {
-        return numero;
-    }
+
+
     
     /**
-     *
-     * @return
+     *  Verifie si la case est à sa position Initiale. Renvoie true si c'est le cas, sinon false. 
+     * @return booléen
      */
     public boolean checkPlacementAbsolute()
     {
@@ -123,8 +118,8 @@ public abstract class Tile  implements java.io.Serializable{
     }
     
     /**
-     *
-     * @return
+     *  Compte le nombre de case voisine correctement placée par rapport à la case.
+     * @return nombre de voisins correct.
      */
     public int checkPlacementRelative()
     {
@@ -150,14 +145,14 @@ public abstract class Tile  implements java.io.Serializable{
     }
     
     /**
-     *
-     * @param context
+     *  Dessine la case dans le Context fourni.
+     * @param context 
      */
     abstract public void draw(GraphicsContext context);
 
     /**
-     *
-     * @param deltaT
+     *  Gestion de du mouvement des élément Graphique.
+     * @param deltaT increment de temps.
      */
     abstract public void animate(double deltaT);
     @Override

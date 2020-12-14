@@ -11,22 +11,22 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
- *
+ *Classe "Board" pour la grille du Taquin
  * @author Mehdi
  */
 public class Board  implements java.io.Serializable{
-    //
-    int width;
-    int height;
-    int tileSize=10;
-    Tile tabTiles [][];
-    Tile vecTiles [];
-    Image image;
+    //Initialisations de valeurs utilisées dans la classe Board
+    private int width;
+    private int height;
+    private int tileSize=10;
+    private Tile tabTiles [][];
+    private Tile vecTiles [];
+    private Image image;
     
     /**
-     *
-     * @param w
-     * @param h
+     *Initialisation de la grille en tant que tableau à 2 dimensions
+     * @param w - Désigne le nombre de colonne
+     * @param h - Désigne le nombre de ligne
      */
     public Board(int w, int h){
         width=w;
@@ -96,24 +96,24 @@ public class Board  implements java.io.Serializable{
     }
     
     /**
-     *
-     * @return
+     *Accesseur à l'attribut width
+     * @return width (int)
      */
     public int getWidth(){
         return width;
     }
     
     /**
-     *
-     * @return
+     *Accesseur à l'attribut height
+     * @return height (entier)
      */
     public int getHeight(){
         return height;
     }
     
     /**
-     *
-     * @return
+     *Fonction isCompleted pour la condition de victoire du puzzle
+     * @return completed (boolean)
      */
     public boolean isCompleted(){
         boolean completed=true;
@@ -125,8 +125,8 @@ public class Board  implements java.io.Serializable{
     }
 
     /**
-     *
-     * @return
+     *Accesseur à l'attribut image
+     * @return image (Image)
      */
     public Image getImage() {
         return image;
@@ -159,14 +159,14 @@ public class Board  implements java.io.Serializable{
     
     
     
-    /*Méthode our permettre l'échange avec une case qui a la possiblité de bouger
-    et la case vide.
-    */ 
+    
 
     /**
-     *
-     * @param p1
-     * @param p2
+     * Méthode our permettre l'échange avec une case qui a la possiblité de bouger
+     * et la case vide.
+     * @param p1 Position de la case 1 (PosInt)
+     * @param p2 Position de la case 2 (PosInt)
+
      */
  
     public void swapTiles(PosInt p1,PosInt p2){
@@ -181,7 +181,7 @@ public class Board  implements java.io.Serializable{
     }
     
     /**
-     *
+     *Méthode permettant le mélange des cases du puzzle
      * @param n
      */
     public void shuffle(int n){
@@ -207,10 +207,10 @@ public class Board  implements java.io.Serializable{
     }
     
     /**
-     *
-     * @param x
-     * @param y
-     * @return
+     *Accesseur à un attribut Tile du tableau tabTiles en fonction de ses coordonnées (Tile)
+     * @param x coordonnée x en colonne (int)
+     * @param y coordonnée y en ligne (int)
+     * @return this.tabTiles[x][y] (Tile)
      * @throws IndexOutOfBoundsException
      */
     public Tile getTile(int x,int y)throws IndexOutOfBoundsException
@@ -219,9 +219,9 @@ public class Board  implements java.io.Serializable{
     }
     
     /**
-     *
-     * @param p1
-     * @return
+     *Accesseur à un attribut Tile du tableau tabTiles en fonction de sa position (Tile)
+     * @param p1 position de la case Tile recherché (int)
+     * @return getTile(p1.getX(),p1.getY()) (Tile)
      * @throws IndexOutOfBoundsException
      */
     public Tile getTile(PosInt p1)throws IndexOutOfBoundsException
@@ -269,7 +269,10 @@ public class Board  implements java.io.Serializable{
         }
     }
     
-    
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString(){
         String buffer= new String();

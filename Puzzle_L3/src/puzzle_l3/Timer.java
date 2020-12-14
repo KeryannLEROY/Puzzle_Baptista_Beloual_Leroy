@@ -5,6 +5,7 @@
  */
 package puzzle_l3;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -17,19 +18,19 @@ import java.util.logging.Logger;
  *
  * @author kerya
  */
-public class Timer implements Runnable
+public class Timer implements Runnable ,Serializable
 {    
     //
-    Thread thread;
-    long previousDate;
-    boolean running;
-    double deltaT;
-    double timeOut;
-    double chrono;
-    HashMap<Object,ArrayList<Method>> methods= new HashMap<>();
+    private Thread thread;
+    private long previousDate;
+    private boolean running;
+    private double deltaT;
+    private double timeOut;
+    private double chrono;
+    private HashMap<Object,ArrayList<Method>> methods= new HashMap<>();
     
     /**
-     *
+     * Constructeur par défaut de la clase Timer
      */
     public Timer()
     {
@@ -39,8 +40,8 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @param milliseconds
+     * Constructeur de la clase Timer
+     * @param milliseconds interval de temps en milliseconde entre deux rafraîchissement du timer.
      */
     public Timer(int milliseconds)
     {
@@ -71,8 +72,8 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @return
+     * Retourne True si le Timer est en fonctionnement, sinon false.
+     * @return booléen
      */
     public boolean isRunning() 
     {
@@ -80,7 +81,7 @@ public class Timer implements Runnable
     }
 
     /**
-     *
+     *  Démarre le timer si il est arrêté ou l'arrête s'il est en fonctionnement.
      */
     public void onOffSwitch()
     {
@@ -88,7 +89,7 @@ public class Timer implements Runnable
     }
 
     /**
-     *
+     * si true est passer en parametre,Démarre le timer, sinon l'arrête.
      * @param running
      */
     public void setRunning(boolean running) 
@@ -104,7 +105,7 @@ public class Timer implements Runnable
     }
 
     /**
-     *
+     * Arrête le Timer.
      */
     public void pause() 
     {
@@ -113,7 +114,7 @@ public class Timer implements Runnable
     }
 
     /**
-     *
+     * Démarre le Timer.
      */
     public void unPause() 
     {
@@ -126,8 +127,8 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @return
+     * Retourne interval de temps en seconde entre deux rafraîchissement du timer.
+     * @return interval de temps en seconde
      */
     public double getTimeOut() 
     {
@@ -135,8 +136,8 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @param milliseconds
+     * Modificateur de l'interval de temps.
+     * @param milliseconds interval de temps en milliseconde
      */
     public void setTimeOut(int milliseconds) 
     {
@@ -144,8 +145,8 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @param timeOut
+     * Modificateur de l'interval de temps.
+     * @param timeOut interval de temps en seconde
      */
     public void setTimeOut(double timeOut) 
     {
@@ -153,8 +154,8 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @param chrono
+     * Modificateur du chronometre.
+     * @param chrono temps en seconde.
      */
     public void setChrono(double chrono) 
     {
@@ -165,8 +166,8 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @return
+     * Accesseur du chronometre.
+     * @return temps en seconde.
      */
     public double getChrono() 
     {
@@ -174,7 +175,7 @@ public class Timer implements Runnable
     }
 
     /**
-     *
+     * Vide la liste de méthode à éxecuter à chaque interval de temps.
      */
     public void clearBehavior()
     {
@@ -185,8 +186,8 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @param object
+     * Retire toutes les méthode assosier à object. A utiliser pour que les object qui ne sont plus utile puissent être detruits.
+     * @param object objet a supprimer
      */
     public void removeFromBehavior(Object object)
     {
@@ -197,9 +198,10 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @param object
-     * @param method
+     * Ajoute une méthode associer à un objet au methodes à éxecuter à chaque interval de temps.
+     * Les méthode fournie doivent possèder un unique parametre de type double.
+     * @param object objet qui execute la méthode.
+     * @param method chaine de caracteres identifiant la méthode à éxecuter.
      */
     public void addToBehavior(Object object,String method)
     {
@@ -232,8 +234,8 @@ public class Timer implements Runnable
     }
 
     /**
-     *
-     * @param deltaT
+     * Methode qui execute toute les méthodes fournies au timer.
+     * @param deltaT interval de temps qui sera passé en paramètre de toutes les méthodes.
      */
     protected void behavior(double deltaT)
     {

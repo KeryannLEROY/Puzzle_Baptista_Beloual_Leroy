@@ -15,11 +15,11 @@ public class CaseVide extends Tile{
     //
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param num
-     * @param board
+     * Constructeur de la classe CaseVide
+     * @param x coordonnée x de la case(entier).
+     * @param y coordonnée Y de la case(entier).
+     * @param num numero identifiant.
+     * @param board Board dans lequel la case est contenu.
      */
     public CaseVide(int x,int y,int num,Board board)
     {
@@ -27,9 +27,9 @@ public class CaseVide extends Tile{
     }
     
     /**
-     *
-     * @param dir
-     * @return
+     * Gere les déplacement de la case. Si le depacement ne peut pas être executé renvoie faux.
+     * @param dir direction dans laquelle la case se deplace
+     * @return booléen
      */
     public boolean move(DIRECTION dir)
     {
