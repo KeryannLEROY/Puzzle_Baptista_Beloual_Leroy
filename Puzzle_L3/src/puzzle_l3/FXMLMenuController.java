@@ -81,7 +81,7 @@ public class FXMLMenuController implements CloseableController{
         
     /**
      *Ouverture du fichier FXMLDocument pour le lancement du jeu
-     * @param event - Lorsque l'utilisateur clique sur le bouton "Jouer"
+     * @param event  Lorsque l'utilisateur clique sur le bouton "Jouer"
      * @throws IOException
      */
     @FXML
