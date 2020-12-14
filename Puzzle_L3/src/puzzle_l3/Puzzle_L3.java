@@ -19,37 +19,21 @@ import javafx.stage.WindowEvent;
  * @author 
  */
 public class Puzzle_L3 extends Application {
-    //
 
     /**
-     *
+     *Initialisation des variables globales
+     * width_board - nombre de colonne initiale (int)
+     * height_board - nombre de ligne initiale (int)
+     * tileSize - taille des cases (int)
+     * gameType - mode de jeu (String)
+     * stage - ... (Stage)
+     * fxmlLoader - ... (FXMLoader)
      */
-    
     public static int width_board = 4;
-
-    /**
-     *
-     */
     public static int height_board = 4;
-
-    /**
-     *
-     */
     public static int tileSize=100;
-
-    /**
-     *
-     */
     public static String gameType="solo";
-
-    /**
-     *
-     */
     public static Stage stage;
-
-    /**
-     *
-     */
     public static FXMLLoader fxmlLoader;
     
     
@@ -79,6 +63,7 @@ public class Puzzle_L3 extends Application {
     }
 
     /**
+     * Lancement de l'application
      * @param args the command line arguments
      */
     public static void main(String[] args) {
