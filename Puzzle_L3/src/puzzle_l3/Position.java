@@ -13,16 +13,16 @@ public abstract class Position  implements java.io.Serializable {
     //
 
     /**
-     *
-     * @param pos
-     * @return
+     * Calcule la distance entre les deux position.
+     * @param pos 
+     * @return distance
      */
     abstract public double getDistance(Position pos);
 
     /**
-     *
+     * Calcule un vecteur de norme égale 1 correspondant à la direction dans laquelle se situe le parametre pos par rapport à this.
      * @param pos
-     * @return
+     * @return 
      */
     abstract public PosDouble getDirection(Position pos);
     

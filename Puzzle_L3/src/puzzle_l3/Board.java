@@ -55,10 +55,10 @@ public class Board  implements java.io.Serializable{
     }
 
     /**
-     *
-     * @param w
-     * @param h
-     * @param tileSize
+     * Constructeur de board
+     * @param w - Désigne le nombre de colonne
+     * @param h - Désigne le nombre de ligne
+     * @param tileSize taille à laquelle les case seront dessiné.
      */
     public Board(int w, int h,int tileSize){
         width=w;
@@ -83,11 +83,11 @@ public class Board  implements java.io.Serializable{
     }
     
     /**
-     *
-     * @param w
-     * @param h
-     * @param tileSize
-     * @param image
+     * Constructeur de board
+     * @param w - Désigne le nombre de colonne
+     * @param h - Désigne le nombre de ligne
+     * @param tileSize taille à laquelle les case seront dessiné.
+     * @param image image utilisée pour l'affichage.
      */
     public Board(int w, int h,int tileSize,Image image){
         this(w,h,tileSize);
@@ -125,7 +125,7 @@ public class Board  implements java.io.Serializable{
     }
 
     /**
-     *Accesseur à l'attribut image
+     * Accesseur à l'attribut image
      * @return image (Image)
      */
     public Image getImage() {
@@ -133,7 +133,7 @@ public class Board  implements java.io.Serializable{
     }
 
     /**
-     *
+     * Modificateur à l'attribut image
      * @param image
      */
     public void setImage(Image image) {
@@ -141,7 +141,7 @@ public class Board  implements java.io.Serializable{
     }
 
     /**
-     *
+     * Accesseur à la taille des cases.
      * @return
      */
     public int getTileSize() {
@@ -149,7 +149,7 @@ public class Board  implements java.io.Serializable{
     }
 
     /**
-     *
+     * Modificateur à la taille des cases.
      * @param tileSize
      */
     public void setTileSize(int tileSize) {
