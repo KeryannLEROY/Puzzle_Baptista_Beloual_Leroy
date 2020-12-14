@@ -1,70 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>5</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>385</x>
-      <y>215</y>
-      <w>105</w>
-      <h>145</h>
+      <x>658</x>
+      <y>350</y>
+      <w>147</w>
+      <h>238</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
+    <panel_attributes>
 &lt;&lt;abstract&gt;&gt;
 Tile
 --
--pos : PosInt
--numero : int 
--board : Board
+#pos : PosInt
+#posInit : PosInt
+#numero : int 
+#board : Board
 
 --
-case(int,int,int,Board)
+Tile(int,int,int,Board)
 +getPos():PosInt
 +setPos(int,int):void
 +setPos(PosInt):void
 +getNum():int
 +getBoard():Board
++getPosInit():PosInt
 +checkPlacementAbsolute():bool
 +checkPlacementRelative():int
 
-+draw():void</panel_attributes>
++draw(GraphicsContext):void
++animate(double):void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>200</x>
-      <y>210</y>
-      <w>105</w>
-      <h>140</h>
+      <x>399</x>
+      <y>343</y>
+      <w>147</w>
+      <h>329</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
+    <panel_attributes>
 Board
 --
 -width : int
 -height : int
-
+-tileSize : int
+-image : Image
 
 -vecTiles : Tile [ ]
 -tabTiles : Tile [ ][ ]
 
 --
 Board(int,int)
+Board(int,int,int)
+Board(int,int,int,Image)
 +getWidth():int
 +getHeight():int
 +isCompleted():bool
++getImage():Image
++setImage(Image):void
++getTileSize():int
++setTileSize(int):void
 +swapTiles(PosInt,PosInt):void
 +shuffle(int):void
-+draw():void</panel_attributes>
++getTile(int,int):Tile
++getTile(PosInt):Tile
++getTile(int):Tile
+
++draw(GraphicsContext):void
++animate(double):void
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>285</y>
-      <w>95</w>
-      <h>40</h>
+      <x>539</x>
+      <y>448</y>
+      <w>133</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 
@@ -78,10 +94,10 @@ m2=0..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>385</x>
-      <y>405</y>
-      <w>105</w>
-      <h>95</h>
+      <x>658</x>
+      <y>616</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;&lt;ENUM&gt;&gt;
 DIRECTION
@@ -96,23 +112,28 @@ LEFT</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>235</y>
-      <w>105</w>
-      <h>95</h>
+      <x>119</x>
+      <y>378</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
-Game
+    <panel_attributes>
+Partie
 --
 -score : int
 
-
+-timer : Timer
 -board : Board
 --
-Game(int,int)
+Partie(Board,Timer)
+Partie()
 +getScore():int
++getBoard():Board
++setScore(int):void
 +setBoard(int,int):void
-+move(DIRECTION):bool
++getTimer():Timer
++setTimer(Timer):void
+
 
 
 </panel_attributes>
@@ -121,10 +142,10 @@ Game(int,int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>100</x>
-      <y>275</y>
-      <w>110</w>
-      <h>40</h>
+      <x>259</x>
+      <y>434</y>
+      <w>154</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 
@@ -138,15 +159,16 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>565</x>
-      <y>235</y>
-      <w>105</w>
-      <h>55</h>
+      <x>910</x>
+      <y>378</y>
+      <w>147</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>CaseVide
 --
 
 --
+CaseVide(int,int,int,Board)
 +move(DIRECTION):bool
 </panel_attributes>
     <additional_attributes/>
@@ -154,33 +176,39 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>565</x>
-      <y>315</y>
-      <w>105</w>
-      <h>120</h>
+      <x>910</x>
+      <y>490</y>
+      <w>147</w>
+      <h>203</h>
     </coordinates>
-    <panel_attributes>Case
+    <panel_attributes>CasePleine
 --
 -posGraphic : posDouble
 
--image : JavaClassForImage
+-image : Image
 -higlight : Color
 -isHiglighted :bool
 
 
 --
+CasePleine(int,int,int,Board)
++setImage(Image):void
++getImage():Image
 +move():bool
-+setHiglightColor():Color
-+toggleHighlight(bool):void</panel_attributes>
++getHiglight():Color
++setHiglight(Color):void
++toggleHighlight(bool):void
++getPosGraphic():void
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>485</x>
-      <y>260</y>
-      <w>90</w>
-      <h>50</h>
+      <x>798</x>
+      <y>413</y>
+      <w>126</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;80.0;160.0;10.0</additional_attributes>
@@ -188,10 +216,10 @@ m2=0..1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>485</x>
-      <y>310</y>
-      <w>90</w>
-      <h>40</h>
+      <x>798</x>
+      <y>483</y>
+      <w>126</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;160.0;60.0</additional_attributes>
@@ -199,12 +227,12 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>420</x>
-      <y>55</y>
-      <w>120</w>
-      <h>95</h>
+      <x>707</x>
+      <y>126</y>
+      <w>168</w>
+      <h>133</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Serialisable&gt;&gt;
+    <panel_attributes>
 &lt;&lt;Abstract&gt;&gt;
 Position
 --
@@ -221,17 +249,17 @@ Position
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>605</x>
-      <y>0</y>
-      <w>105</w>
-      <h>95</h>
+      <x>966</x>
+      <y>49</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>PosInt
 --
 -x : int
 -y : int
 --
-Position(int,int)
+PosInt(int,int)
 
 +getX():int
 +getY():int
@@ -245,17 +273,17 @@ Position(int,int)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>605</x>
-      <y>115</y>
-      <w>105</w>
-      <h>95</h>
+      <x>966</x>
+      <y>210</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>PosDouble
 --
 -x : double
 -y : double
 --
-Position(double,double)
+PosDouble(double,double)
 
 +getX():double
 +getY():double
@@ -266,10 +294,10 @@ Position(double,double)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>535</x>
-      <y>45</y>
-      <w>80</w>
-      <h>50</h>
+      <x>868</x>
+      <y>112</y>
+      <w>112</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;80.0;140.0;10.0</additional_attributes>
@@ -277,10 +305,10 @@ Position(double,double)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>535</x>
-      <y>110</y>
-      <w>80</w>
-      <h>55</h>
+      <x>868</x>
+      <y>203</y>
+      <w>112</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;140.0;90.0</additional_attributes>
@@ -289,28 +317,25 @@ Position(double,double)
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>105</y>
-      <w>105</w>
-      <h>80</h>
+      <y>588</y>
+      <w>147</w>
+      <h>112</h>
     </coordinates>
-    <panel_attributes>SerialGame
+    <panel_attributes>SerializerPartie
 --
--game : Game
 --
-+setGame(Game game):void
-+getGame():Game
-+serializeGame(File file):void
-+deserializeGame(File file):void
++serialize(Partie):void
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>235</x>
-      <y>80</y>
-      <w>65</w>
-      <h>65</h>
+      <x>448</x>
+      <y>161</y>
+      <w>91</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 Serializable
@@ -321,10 +346,10 @@ Serializable
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>295</x>
-      <y>110</y>
-      <w>135</w>
-      <h>15</h>
+      <x>532</x>
+      <y>203</y>
+      <w>189</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;250.0;10.0</additional_attributes>
@@ -332,10 +357,10 @@ Serializable
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>295</x>
-      <y>130</y>
-      <w>155</w>
-      <h>95</h>
+      <x>532</x>
+      <y>231</y>
+      <w>217</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;290.0;170.0</additional_attributes>
@@ -343,10 +368,10 @@ Serializable
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>255</x>
-      <y>140</y>
-      <w>15</w>
-      <h>80</h>
+      <x>476</x>
+      <y>245</y>
+      <w>21</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
@@ -354,12 +379,91 @@ Serializable
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>65</x>
-      <y>115</y>
-      <w>180</w>
-      <h>130</h>
+      <x>210</x>
+      <y>210</y>
+      <w>252</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>340.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>161</x>
+      <y>588</y>
+      <w>147</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>DeserPartie
+--
+--
++deserialize():Partie
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7</x>
+      <y>0</y>
+      <w>224</w>
+      <h>315</h>
+    </coordinates>
+    <panel_attributes>Timer
+--
+-thread : Thread 
+-previousDate : long 
+-running : boolean 
+-deltaT : double 
+-timeOut : double 
+-chrono : double 
+-methods : HashMap&lt;Object,ArrayList&lt;Method&gt;&gt; 
+    
+--
+Timer()
+Timer(int)
++isRunning():bool
++onOffSwitch():void
++setRunning(boolean running):void
++pause():void
++unPause():void
++getTimeOut():double
++setTimeOut(int milliseconds) :void
++setTimeOut(double timeOut) :void
++setChrono(double chrono):void
++getChrono():double
++clearBehavior():void
++removeFromBehavior(Object object):void
++addToBehavior(Object object,String method):void
+#behavior(double deltaT):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>224</x>
+      <y>189</y>
+      <w>238</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>154</x>
+      <y>308</y>
+      <w>70</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+contient ^</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
 </diagram>
