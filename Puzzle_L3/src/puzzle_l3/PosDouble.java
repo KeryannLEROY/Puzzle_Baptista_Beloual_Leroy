@@ -16,8 +16,8 @@ public class PosDouble extends Position{
 
     /**
      *
-     * @param x
-     * @param y
+     * @param x coordonnée x de la case (entier)
+     * @param y coordonnée x de la case (entier)
      */
     public PosDouble(double x, double y) {
         this.x = x;
@@ -25,7 +25,7 @@ public class PosDouble extends Position{
     }
 
     /**
-     *
+     * permet d'accéder à la coordonnée x de la case 
      * @return
      */
     public double getX(){
@@ -33,7 +33,7 @@ public class PosDouble extends Position{
     }
 
     /**
-     *
+     * permet d'accéder à la coordonnée y de la case 
      * @return
      */
     public double getY(){
@@ -41,7 +41,7 @@ public class PosDouble extends Position{
     }
 
     /**
-     *
+     **permet de modifier la coordonnée x
      * @param x
      */
     public void setX(double x){
@@ -49,7 +49,7 @@ public class PosDouble extends Position{
     }
 
     /**
-     *
+     **permet de modifier la coordonnée y
      * @param y
      */
     public void setY(double y){

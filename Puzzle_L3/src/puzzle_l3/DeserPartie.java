@@ -17,7 +17,7 @@ public class DeserPartie {
     //
 
     /**
-     *
+     *permet la régénération des données sauvegardées
      * @return
      */
     public static Partie deserialize() {

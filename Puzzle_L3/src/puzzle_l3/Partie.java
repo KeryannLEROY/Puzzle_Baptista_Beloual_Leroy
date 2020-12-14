@@ -17,8 +17,8 @@ public class Partie  implements java.io.Serializable{
 
     /**
      *
-     * @param board
-     * @param timer
+     * @param board grille 
+     * @param timer chronomètre de  la partie
      */
     public Partie( Board board, Timer timer) {
         this.score = 0;
@@ -33,7 +33,7 @@ public class Partie  implements java.io.Serializable{
     }
     
     /**
-     *
+     *permet d'accéder au score
      * @return
      */
     public int getScore()
@@ -43,7 +43,7 @@ public class Partie  implements java.io.Serializable{
     }
 
     /**
-     *
+     *permet d'accéder à la grille
      * @return
      */
     public Board getBoard() {
@@ -51,7 +51,7 @@ public class Partie  implements java.io.Serializable{
     }
 
     /**
-     *
+     *permet la mise à jour du score
      * @param score
      */
     public void setScore(int score) {
@@ -59,7 +59,7 @@ public class Partie  implements java.io.Serializable{
     }
 
     /**
-     *
+     *permet la mise à jour de la grille
      * @param board
      */
     public void setBoard(Board board) {
@@ -67,7 +67,7 @@ public class Partie  implements java.io.Serializable{
     }
 
     /**
-     *
+     *permet d'accéder au chronomètre
      * @return
      */
     public Timer getTimer() {
@@ -75,7 +75,7 @@ public class Partie  implements java.io.Serializable{
     }
 
     /**
-     *
+     *permet de mettre à jour le chronometre
      * @param timer
      */
     public void setTimer(Timer timer) {

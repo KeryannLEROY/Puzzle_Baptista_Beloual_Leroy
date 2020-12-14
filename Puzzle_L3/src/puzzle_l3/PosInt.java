@@ -17,8 +17,8 @@ public class PosInt extends Position{
 
     /**
      *
-     * @param x
-     * @param y
+     * @param x coordonnée x de la case (entier)
+     * @param y coordonnée y de la case (entier)
      */
     public PosInt(int x, int y) {
         this.x = x;
@@ -26,7 +26,7 @@ public class PosInt extends Position{
     }
 
     /**
-     *
+     * permet d'accéder à la coordonnée x de la case 
      * @return
      */
     public int getX() {
@@ -34,7 +34,7 @@ public class PosInt extends Position{
     }
 
     /**
-     *
+     *permet d'acceder à la coordonnée y de la case 
      * @return
      */
     public int getY() {
@@ -42,7 +42,7 @@ public class PosInt extends Position{
     }
 
     /**
-     *
+     *permet de modifier la coordonnée x
      * @param x
      */
     public void setX(int x) {
@@ -50,7 +50,7 @@ public class PosInt extends Position{
     }
 
     /**
-     *
+     *permet de modifier la coordonnée y
      * @param y
      */
     public void setY(int y) {
@@ -58,7 +58,7 @@ public class PosInt extends Position{
     }
 
     /**
-     *
+     *renvoi la distance entre deux cases
      * @param pos
      * @return
      */

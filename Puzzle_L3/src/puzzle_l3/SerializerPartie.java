@@ -15,7 +15,7 @@ import java.io.ObjectOutputStream;
 public class SerializerPartie {
    
     /**
-     *
+     *permet de sauvegarder les données de la partie
      * @param partie
      */
     public static void serialize(Partie partie) {
